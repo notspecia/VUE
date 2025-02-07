@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VUE + Vanilla HTML CSS JS</title>
+</head>
+<body>
+  <h1>Sintassi base di VUE</h1>
+
+  <!-- tramite id colleghiamo il container a VUE js per manipolare i dati che vogliamo -->
+  <div id="appCourse">
+
+    <!-- inseriamo i dati tramite INTERPOLATION anche di un oggetto con i vari dati e proprietà di un corso -->
+    <h2>I miei corsi {{titolo}}</h2>
+    <p><strong>nome corso:</strong> {{ goal.name }}</p>
+    <p><strong>descrizione corso:</strong> {{ goal.descrizione }}</p>
+    <p><strong>tempo per imparare:</strong> {{ goal.tempo }} ore</p>
+    <!-- mettiamo il collegamento link tramite sempre i dati manipolati da VUE -->
+    <p>Scopri di più di <a v-bind:href="vueDocs">Vue</a></p>
+
+    <hr />
+
+    <!-- gioco del numero randomico -->
+    <p>{{win}}</p>
+    <button v-on:click="letsPlay()">gioca a random number!</button>
+    <!-- al reload della pagina, restituiata direttamente il return stringa della funzione dei methods invocata direttamente all'interno dell'interpolation{{}} -->
+    <p>{{learnProgramming()}}</p>
+
+  </div>
+
+
+  <!-- collegamento CDN con Vue -->
+  <script src="https://unpkg.com/vue@3.4.9/dist/vue.global.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>

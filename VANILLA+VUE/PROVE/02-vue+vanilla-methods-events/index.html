@@ -1,0 +1,65 @@
+<!-- ! è importante separare la logica dall view, la logica da JS e la view HTML, i metodi e funzioni possono essere evocati con events tramite () o anche senza 
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VUE + Vanilla HTML CSS JS</title>
+</head>
+<body>
+  <h1>Events Methods base di VUE</h1>
+
+  <!-- tramite id colleghiamo il container a VUE js per manipolare i dati che vogliamo -->
+  <div id="appCourse">
+
+
+    <!-- se vogliamo preservare lo stato iniziale di ad esempio un count, ma sempre quest'utlima potrebbe essere modificata
+    nel corso del programma, allora possiamo usare un attributo speciale da applicare al tag che contiene quell'interpolazione {{}} 
+    attributo: "v-once"-->
+    <h3 v-once>Valore iniziale del count: {{count}}</h3>
+
+    <!-- bottoni dinamici con event listeners pronti ad ascoltare -->
+    <!-- ACCETTANO DEI PARAMETRI PASSANDO IL NUMERO CHE BISOGNA AGGIUNGERE AL COUNT al click dei bottoni
+     possiamo giocare con gli eventi volendo specificando anche in base a quale click e dove ecc... -->
+    <h2>Eventi messi in gioco</h2>
+    <button v-on:click.right="increase(1)">incrementa +1</button>
+    <button v-on:click="decrease(1)">decrementa -1</button>
+    <button v-on:click="increase(5)">incrementa +5</button>
+    <button v-on:click.left="decrease(5)">decrementa -5</button>
+    <!-- paragrafo con il risultato in continuo change -->
+    <p>risultato: {{count}}</p>
+
+    <hr>
+
+    <!-- TEST PROBLEMA RI-MONTAGGIO DEL COMPONENTE, per l'interpolazione diretta di funzione con valore di ritorno
+    SOLUZIONE NELLE PROVE-sezione-04 -->
+    <p style="color: red;">ora sono il numero: {{generateRand()}} mi aggiorno ogni volta che si incrementa!</p>
+
+
+    <!-- proviamo a collegare ad un input un event listener in cui al cambio, passa un evento di quell'input quando viene modficato
+    PRIMA ABBIAMO USATO PER CAMBIARE IL NOME E MOSTRARLO CHE CAMBIA NEL <p> sotto usando "v-model" collegato al dato dentro il js 
+    ! in questo caso non passiamo event come parametro, ma invochiamno SENZA () se non dobbiamo passare nessun paragrafo
+    ! in tal caso passiamo qualche parametro dovremmo passare l'evento dell'input modificato "v-on:input" con $event -->
+    <input type="text" v-on:input="handleChange($event, 'speciale')">
+    <p>il tuo nome: {{name}}</p>
+
+    <hr>
+
+    <!-- lavoriamo su un form ora, in cui al submit, dobbiamo:
+    - prevenire il comportamento di default di esso direttamente anche tramite:  <form v-on:submit.prevent="handleSubmit">  -->
+    <form v-on:submit="handleSubmit($event)">
+      <h2>iscriviti subito!</h2>
+      <input type="text" required>
+      <button type="submit">Login</button>
+    </form>
+
+  </div>
+
+
+  <!-- collegamento CDN con Vue -->
+  <script src="https://unpkg.com/vue@3.4.9/dist/vue.global.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>

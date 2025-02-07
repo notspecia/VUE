@@ -166,7 +166,7 @@ se proviamo ad esempio ad inserire un link dinamico gestito tramite VUE, **NON**
 quindi da quanto visto, questo metodo è utilizzabile esclusivamente solo per l'apertura e la chiusa di TAG HTML, ma dovremo utilizzare in questo caso il `Data Binding`, tramite un attributo HTML che è riconosciuto da VUE ossia `v-bind:href='nomeDato'`:
 
 ```html
-<p>Scopri di più di <a v-bind="" href="{{vueDocs}}">Vue</a></p>
+<p>Scopri di più di <a v-bind:href="propietà">Vue</a></p>
 ```
 
 quindi è necessario in alcuni casi in cui è NECESSARIO IMPOSTARE IL VALORE DI ALCUNI ATTRIBUTI COME `href`
@@ -177,3 +177,36 @@ quindi è necessario in alcuni casi in cui è NECESSARIO IMPOSTARE IL VALORE DI 
 
 spero mai di non utilizzarlo, metodo di VUE che permette di caricare un dato contenente gia un tag HTML
 una review delle guida fatta fin'ora clicca [QUI](https://csip.udemy.com/course/vuejs-2-the-complete-guide/learn/lecture/21463156#content)
+
+
+---
+
+### differenze nell'utilizzo di v-model VS v-bind:value + event change NEGLI INPUT
+ciao,
+allora è come dici;
+nel dettaglio vue, come la più parte dei framework di oggi funziona con un "one-way binding" ovvero tu ad un componente passi dentro delle prop (reattive, quindi se le prop cambiano, il componente ri-renderizza) ma il componente tali prop non le può modificare, per farlo deve emettere un evento verso il componente padre che possiede i dati e sarà lui ad aggiornarli;
+ 
+tuttavia, ci sono alcuni pattern molto comuni, ad esempio i campi dei form, dove si vuole praticamente un "two ways binding"; per esempio una input di un form tipicamente ha sempre lo stesso comportamento: riceve il proprio valore dal componente padre, e quando l'utente lo modifica, emette un evento change che chiede al padre di aggiornarlo; in pratica questo:
+ 
+ <input
+    :value="props.modelValue"
+    @input="emit('update:modelValue', $event.target.value)"
+  />
+e poi nel componente padre ascoltare l'evento ed aggiornare modelValue col valore che viene passato nell'evento;
+ 
+è un pattern comune e sarebbe noioso scriverselo sempre a mano; in quel caso usando v-modello scrive lui per te;
+in pratica un valore passato con v-model può venire aggiornato direttamente dal componente che lo riceve, senza emettere eventi verso il genitore che glielo passa (ma dietro le quinte il funzionamento resta lo stesso), ovvero vue emette per te l'evento e lo gestisce nel genitore; pertanto usare v-model oppure :value e poi emettere l'evento e gestirlo sono totalmente equivalenti
+ 
+è spiegato molto bene nella guida https://vuejs.org/guide/components/v-model.html
+ 
+
+
+### Prima problematica riscontrata con VUE js
+nel momento in cui torniamo all'`esempio del bottone che incrementa un data proprietà come count`, quest'ultimo quando viene eseguito l'evento IL COMPONENTE SI RIMONTA E SI AGGIORNA, e se magari sono presenti all'interno dell'html invocazioni di funzioni che ritornano direttamente dei DATI senza MEMORIZZARLI all'interno di un dato, la funzione verrà reinvocata ogni volta che viene incrementato o decrementato il counter tramite gli EVENTI.
+
+per vedere gli effetti collaterali, guardare `02-vue+vanilla-methods-events`
+
+#### soluzione: COMPUTED PROPERTIES
+è da aggiungere all'OGGETTO DI CONFIGURAZIONE NELLA CREAZIONE DELL'APP:
+```js
+```

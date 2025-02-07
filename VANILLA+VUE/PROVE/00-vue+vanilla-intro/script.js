@@ -4,6 +4,7 @@ Vue.createApp({
     return {
       todoList: [], // conterrà i vari todo aggiunti al click del bottone
       todo: "", // contiene il todo compilato all'interno dell'input (inizialmente vuoto)
+      count: 0
     };
   },
 
@@ -13,5 +14,8 @@ Vue.createApp({
       this.todoList.push(this.todo);
       this.todo = ""; // resettiamo il todo input a una stringa vuota
     },
+    increaseCount() {
+      this.count++;
+    }
   },
 }).mount("div#appTodo");
