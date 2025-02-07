@@ -1,0 +1,41 @@
+<!-- ! è importante separare la logica dall view, la logica da JS e la view HTML, i metodi e funzioni possono essere evocati con events tramite () o anche senza 
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VUE + Vanilla HTML CSS JS</title>
+</head>
+<body>
+  <h1>Data and Events binding</h1>
+
+  <!-- tramite id colleghiamo il container a VUE js per manipolare i dati che vogliamo -->
+  <div id="appCourse">
+
+    <!--* 01. modo DATA BINDING + EVENT BINDING
+    aggiungiamo a questo input la possibilità di resettarlo tramite un evento, per far si che questo evento
+    rimanga in colleggamento con il VALUE dell'input, lo coordiniamo con l'evento tramite -> "v-bind:value"
+    MEMORIZZIAMO IL DATO INPUT DENTRO ANCHE L'INPUT!  -->
+    <input type="text" v-on:input="handleChange($event)" v-bind:value="name">
+    <button v-on:click="resetInput()">Resetta campo</button>
+    <!-- ovviamente la proprietà che è bindata e legata al reset, è presente anche dentro il paragrafo di risultato -->
+    <p>il tuo nome: {{name}}</p>
+
+
+    <!--* 02.modo TWO-WAY-DATA-BINDING
+     aggiungiamo direttamente all'input l'attributo v-model come abbiamo visto le prime volte, questo permette di bypassare
+     l'inserimento di un evento che cambia esso, e di sostiuirlo al v-bind:value -->
+    <input type="text" v-model="name">
+    <!-- ovviamente la proprietà che è bindata e legata al reset, è presente anche dentro il paragrafo di risultato -->
+    <p>il tuo nome: {{name}}</p>
+
+  </div>
+
+
+  <!-- collegamento CDN con Vue -->
+  <script src="https://unpkg.com/vue@3.4.9/dist/vue.global.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
