@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+
+    <h1>VUE test</h1>
+    <!-- come angular o react, leghiamo la nostra interfaccia a un elemento detto di root -->
+    <div id="app">
+        <p>{{message}}</p>
+        <button @click="handleClick">click me!</button>
+    </div>
+
+    <script>
+        // PER ADESSO UTILIZZIAMO PER QUESTO TEST USERMO OPTIONS API DI VUE (version vecchia 2 già vista)
+        Vue.createApp({
+            data() { // dentro i data con stato dinamico c'è un oggetto che restituisce valori al suo interno
+                return {
+                    message: "Hello World!"
+                }
+            },
+            methods: { // qui dentro mettiamo tutte le funzioni che vogliamo utilizzare come eventi (USIAMO @ al post di v-on)
+                handleClick() {
+                    this.message = "i'm cliccked!";
+                }
+            }
+        }).mount("#app"); // montiamo l'applicazione sul div con id app, li dentro possiamo usare interpolation {{}}
+    </script>
+</body>
+</html>
