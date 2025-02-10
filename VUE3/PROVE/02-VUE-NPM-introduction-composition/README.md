@@ -1,4 +1,4 @@
-# 02-VUE-NPM-composition-api
+# 02-VUE-NPM-introduction-composition
 
 This template should help get you started developing with Vue 3 in Vite.
 

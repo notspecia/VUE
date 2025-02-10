@@ -3,7 +3,7 @@
  
  - script (contiene la logica dell'applicazione) 
  - template (quello che viene renderizzato)
- - style
+ - style (scoped attributo, che vale solo per questo componente root principale)
 -->
 
 <!-- embedded script per il componet root principale -->
@@ -24,11 +24,13 @@ export default {
 
   // metodi del componente (metodi che possono essere richiamati all'interno del template) tramite v-on...
   methods: {
+
+    // al click, va a cambiare lo stato nello stato inverso
     handleClick() {
       if (this.status === 'active') {
-        this.status = 'inactive'
+        this.status = 'inactive';
       } else {
-        this.status = 'active'
+        this.status = 'active';
       }
     }
 
