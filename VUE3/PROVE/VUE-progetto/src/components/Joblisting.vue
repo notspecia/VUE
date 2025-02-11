@@ -29,7 +29,6 @@ const props = defineProps({
     }
 });
 
-
 // rendiamo l'import json reattivo
 const jobs = ref(jobsDatas.jobs);
 

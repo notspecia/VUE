@@ -1,12 +1,32 @@
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, computed } from 'vue';
 
-defineProps({
+const props = defineProps({
     job: {
         type: Object,
         required: true
     }
-})
+});
+
+
+/* 
+adesso andiamo a lavorare utilizzando computed(), è una funzione che:
+- VIENE RUNNATO quando un particolare valore viene cambiato
+- simile all'useEffect() di react
+- esempio cliccando un bottone nelaìla card permette di leggere + info sulla descrizione del job
+*/
+const showFullDescription = ref(false);
+
+const reducedDescription = computed(() => {
+    let description = props.job.description;
+
+    if (!showFullDescription.value) {
+        description = description.substring(0, 30) + "...";
+    }
+
+    return description;
+});
+
 </script>
 
 
@@ -18,7 +38,7 @@ defineProps({
         <p class="job-location">Location: {{ job.location }}</p>
         <p class="job-type">Type: {{ job.type }}</p>
         <p class="job-salary">Salary: {{ job.salary }} </p>
-        <p class="job-description">{{ job.description }}</p>
+        <p class="job-description">{{ description }}</p>
         <button class="read-more">Read more</button>
         <div class="company-info">
             <p class="company-name">Company: {{ job.company.name }} </p>
