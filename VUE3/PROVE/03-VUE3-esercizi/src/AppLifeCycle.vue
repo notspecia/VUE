@@ -1,13 +1,14 @@
 <script setup>
 // importiamo il ref() funzione che permette di rendere i dati reattivi
-import { ref } from 'vue';
+// importiamo onMounted() funzione che viene da vue che viene eseguita al montaggio del componente VUE
+import { ref, onMounted } from 'vue';
 
-const tasks = ref(["Studiare VUE 3"]); // contenitore delle task aggiornato tramite form
+const tasks = ref([]); // contenitore delle task aggiornato tramite form
 const newTask = ref(""); // collegato all'input tramite v-model (si aggiorna all'aggiornamento di esso)
 
 const handleSubmit = () => {
     if (newTask.value.trim()) {
-        tasks.value.push(newTask.value); // aggiungiamo la task alla lista
+        tasks.value.unshift(newTask.value); // aggiungiamo la task alla lista
         newTask.value = ""; // reset del valore del task
     }
 }
@@ -15,6 +16,23 @@ const handleSubmit = () => {
 const handleDelete = (index) => {
     tasks.value.splice(index, 1);
 }
+
+//**** funzione onMounted() che contiene una callback function async che carica delle tasks via fetch API ***** 
+onMounted(async () => {
+    try {
+        // otteniamo il json con le task e lo convertiamo in una array da json
+        const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+        const data = await response.json();
+
+        // assegniamo all'array delle tasks, solamente i titoli di essi
+        tasks.value = data.map((task) => {
+            return task.title;
+        });
+
+    } catch (error) {
+        console.log(error.message);
+    }
+})
 
 </script>
 
