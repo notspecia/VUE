@@ -1,8 +1,8 @@
 // FORM VUE APP prove
-import App from './AppForm.vue'
+// import App from './AppForm.vue'
 
-// ....
-
+// LIFE CYCLE VUE APP prove
+import App from './AppLifeCycle.vue'
 
 
 // -----------------------------------
