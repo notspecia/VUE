@@ -5,21 +5,22 @@ import Card from './Card.vue';
 // dati da passare a ogni singola Card component da renderizzare
 const datas = [
     {
-        title: "Bella zi",
-        text: "loremloremlore mjdsf osdjfkl sdfjklfds",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM4tTki66kvbqrRnt9T8U3aepD8ZElLn99aw&s"
+        title: "Opportunità di lavoro in Informatica",
+        text: "Scopri le opportunità di carriera nel settore informatico. Dalle posizioni junior a quelle senior, ti offriamo supporto per entrare nel mondo della tecnologia, con aggiornamenti costanti sui lavori più richiesti e sulle tendenze del settore.",
+        image: "https://www.stellarsolutions.it/wp-content/uploads/2018/01/lavorare-informatica.png"
     },
     {
-        title: "aoaoaoaoa zi",
-        text: "dfs  rem gsdgs  ore mjdsf osdjfkl sdfjklfds",
-        image: "https://assets.goal.com/images/v3/blt5d5dd57c5755b3e8/Udogie_Italia.jpg?auto=webp&format=pjpg&width=3840&quality=60"
+        title: "Corsi gratuiti per la crescita professionale",
+        text: "Accedi a corsi gratuiti per migliorare le tue competenze. Offriamo una vasta gamma di corsi online in vari settori, tra cui sviluppo software, gestione aziendale e marketing digitale, per aiutarti a restare competitivo nel mondo del lavoro.",
+        image: "https://iformsrl.it/wp-content/uploads/2024/05/Corsi-gratuiti-1024x664.png"
     },
     {
-        title: "ciaaaaaaaaaaaaao zi",
-        text: "lores dff lore mjdsf osdjfkl sdfjklfds",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgqBpCYxOZq709IMBgJbdhdfEEaw3NlZbnAw&s"
+        title: "Diventa Front-End Developer",
+        text: "Impara le basi dello sviluppo front-end con il nostro programma di formazione. Dallo sviluppo web alla creazione di interfacce utente, questo percorso ti offre le competenze per lavorare come sviluppatore front-end e affrontare progetti reali.",
+        image: "https://lacerba.io/blog/wp-content/uploads/2021/10/FrontEndDeveloper.png"
     }
 ];
+
 </script>
 
 
@@ -32,7 +33,7 @@ const datas = [
         *IMPORTANTE:
         utilizziamo ":" per passare un binding dinamico delle props invece di una stringa statica (come se stessimo utilizzando v-bind) 
         -->
-        <Card v-for="(data, index) in datas" :card-data="data" />
+        <Card v-for="(data, index) of datas" :card-data="data" :key="index" />
     </div>
 </template>
 
@@ -42,9 +43,10 @@ const datas = [
 <style scoped>
 .container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    background-color: orange;
-    min-height: 200px;
+    gap: 20px;
+    margin-top: 70px;
 }
 </style>

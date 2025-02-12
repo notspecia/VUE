@@ -22,7 +22,7 @@ defineProps({
 
 <template>
     <h1>{{ title }}</h1>
-    <h3>{{ subtitle }}</h3>
+    <h4>{{ subtitle }}</h4>
 </template>
 
 
@@ -31,6 +31,16 @@ defineProps({
 <style scoped>
 h1 {
     text-align: center;
-    background-color: yellow;
+    font-size: 45px;
+    font-family: var(--font-title);
+    margin-bottom: 5px;
+}
+
+h4 {
+    font-weight: lighter;
+    font-size: 20px;
+    text-align: center;
+    font-family: var(--font-subtitle);
+    opacity: 0.5;
 }
 </style>

@@ -1,0 +1,28 @@
+/* roboto font from GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+
+/* -------------------------------------------------- */
+
+h1,
+h2 {
+    margin-top: 150px;
+    font-weight: 600;
+}
+
+:root {
+    /* font styles */
+    --font-title: 'Courier New', Courier, monospace;
+    --font-subtitle: Verdana, Geneva, Tahoma, sans-serif;
+    --font-text: "Roboto", sans-serif;
+}
