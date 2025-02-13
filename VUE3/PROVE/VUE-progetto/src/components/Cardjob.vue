@@ -1,6 +1,7 @@
 <script setup>
 import { ref, defineProps, computed } from 'vue';
 
+
 const props = defineProps({
     job: {
         type: Object,
@@ -56,18 +57,26 @@ const reactiveDescription = computed(() => {
         <p class="job-salary">Salary: {{ job.salary }} </p>
         <p class="job-description">Description:{{ reactiveDescription }} </p>
         <!-- 
-        aggiungiamo un metodo al bottone, che al click va a:
+        aggiungiamo un metodo a un RouterLink, che al click va a:
         - modificare lo stato di"showFullDescription"
         - al momento della modifica va a rieseguire il computed che contiene esso, cambiando la descrizione in maniera dinamica
         *in tal caso è true, andiamo a mostrare un bottone che permette di leggere meno e TRONCARE DI NUOVO LA DESCRIZIONE cambiando il flag
         -->
-        <button v-if="!showFullDescription" class="read-more" @click="handleReading()">Read more</button>
-        <button v-else class="read-less" @click="handleReading()">Read Less</button>
+        <div class="button-read-toggle">
+            <button v-if="!showFullDescription" class="read-more" @click="handleReading()">Read more...</button>
+            <button v-else class="read-less" @click="handleReading()">Read Less</button>
+        </div>
         <div class="company-info">
             <p class="company-name">Company: {{ job.company.name }} </p>
             <p class="company-description">{{ job.company.description }}</p>
             <p class="contact-email">Contact Email: {{ job.company.contactEmail }} </p>
             <p class="contact-phone">Contact Phone: {{ job.company.contactPhone }} </p>
+        </div>
+        <!-- settiamo anche il Router link per il bottone che porta a schermo completamente LE INFORMAZIONI DI QUEL JOB, provare se:
+        - creare una nuova viwe con una rotta predefinita o boh 
+        -->
+        <div class="button-read-more">
+            <RouterLink :to="'/jobs/' + job.id" class="read-more-job">Leggi di più</RouterLink>
         </div>
     </div>
 </template>
@@ -83,8 +92,14 @@ const reactiveDescription = computed(() => {
     width: 500px;
     background-color: rgb(232, 249, 242);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: var(--font-text);
     padding: 40px 20px;
     border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.02);
 }
 
 h3 {
@@ -117,21 +132,42 @@ h3 {
     font-weight: bold;
 }
 
+/* bottone toggle per mostrare di + della descrizione o di - */
+button.read-more,
+button.read-less {
+    font-size: 18px;
+    text-decoration: underline;
+    border: none;
+    padding: 0;
+}
+
 button.read-more {
-    width: 70%;
-    background-color: green;
-    color: white;
-    border: 2px solid white;
-    border-radius: 10px;
-    padding: 10px 30px;
+    color: green;
 }
 
 button.read-less {
-    width: 70%;
-    background-color: red;
-    color: white;
-    border: 2px solid white;
+    color: gray;
+}
+
+/* bottone che porta a un nuovo componente che permette di leggere singolarmente la card di quel job */
+div.button-read-more {
+    width: 30%;
+    background-color: green;
+    text-align: center;
+    padding: 10px;
     border-radius: 10px;
-    padding: 10px 30px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+        background-color: rgb(0, 88, 0);
+    }
+}
+
+.read-more-job {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
 }
 </style>

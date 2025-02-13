@@ -2,14 +2,17 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 
-// importiamo le varie views, all'interno di questo script per abilitare il routing e le sue azioni!
+// importiamo le varie views COMPONENTS, all'interno di questo script per abilitare il routing e le sue azioni!
 import Home from "@/views/Home.vue";
 import Jobs from "@/views/Jobs.vue";
 import AddJobs from "@/views/AddJobs.vue";
+import Jobdetails from "@/views/Jobdetails.vue";
 
-/* creiamo un istanza di routing tramite il createRouter(), inserendo un oggetto di configurazione con:
+/* 
+* creiamo un istanza di routing tramite il createRouter(), inserendo un oggetto di configurazione con:
 - history: tramite la funzione createWebHistory(), permette di applicare le azioni come una normale MPA (torna indietro o altro)
-- routes: un array di oggetti, OGNI OGGETTO CONTIENE LE VIEWS DA NAVIGARE (path + name + component) */
+- routes: un array di oggetti, OGNI OGGETTO CONTIENE LE VIEWS DA NAVIGARE (path + name + component) 
+*/
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
@@ -27,10 +30,17 @@ const router = createRouter({
             path: "/addJobs",
             name: "addJobs",
             component: AddJobs
+        }, 
+        {
+            path: "/addJobs",
+            name: "addJobs",
+            component: AddJobs
+        }, 
+        { 
+            path: '/jobs/:id', 
+            name: 'jobDetail', 
+            component: Jobdetails, 
         },
-        // {
-
-        // }
     ]
 });
 

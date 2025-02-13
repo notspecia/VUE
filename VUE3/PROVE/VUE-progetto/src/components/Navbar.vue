@@ -1,21 +1,31 @@
 <script setup>
-/*
-*/
+// ORA AL POSTO di usare i link normali con in vanilla <a :href""/>, usiamo la funzione Routerlink importata da VUE
+import { RouterLink } from "vue-router";
+
 // importiamo il logo all'interno del componente in assets/ (è != se fosse all'interno di public/) con v-bind (:src)
 import vueLogo from "@/assets/logos/vue-logo.png";
 </script>
 
 
 
-
+<!-- 
+usiamo RouterLink come tag per permettere di navigare tra le rotte impostare nel router index.js
+al posto di :href usiamo l'attributo -> to="" cosi diventerà una SPA senza ricaricare le pagine ma smontando e montando componenti dall'App.vue collegato al router.js
+-->
 <template>
     <header>
-        <a id="logo" href="#"><img :src="vueLogo" alt="logo"></a>
+        <RouterLink id="logo" to="/"><img :src="vueLogo" alt="logo"></RouterLink>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/jobs">Jobs</a></li>
-                <li><a href="/addJobs">Add Jobs</a></li>
+                <li>
+                    <RouterLink to="/">Home</RouterLink>
+                </li>
+                <li>
+                    <RouterLink to="/jobs">Jobs</RouterLink>
+                </li>
+                <li>
+                    <RouterLink to="/addJobs">Add Jobs</RouterLink>
+                </li>
             </ul>
         </nav>
     </header>
@@ -43,6 +53,8 @@ header {
     z-index: 1000;
     text-align: center;
     padding: 20px 2%;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
 }
 
 
@@ -53,7 +65,6 @@ header nav ul li {
     padding: 0 30px;
 }
 
-
 header nav ul li a {
     color: white;
     font-size: 18px;
@@ -62,7 +73,7 @@ header nav ul li a {
     text-decoration: none;
 
     &:hover {
-        color: rgb(61, 113, 182);
+        color: greenyellow;
     }
 }
 </style>

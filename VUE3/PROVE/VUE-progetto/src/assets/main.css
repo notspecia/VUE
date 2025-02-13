@@ -14,10 +14,18 @@ html {
 
 /* -------------------------------------------------- */
 
+body {
+    background-color: rgb(242, 242, 242);
+}
+
 h1,
 h2 {
     margin-top: 150px;
     font-weight: 600;
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 :root {

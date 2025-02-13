@@ -1,11 +1,12 @@
 <script setup>
 
-import { ref, defineProps } from 'vue';
+import { defineProps, onMounted, ref } from 'vue';
 
-// importiamo i jobs dal json apposito, rendendolo reattivo tramite ref()
-import jobsDatas from "@/jobs.json";
 // importiamo il componente Cardjob che renderizzera i dati dei jobs
 import Cardjob from './Cardjob.vue';
+
+// importiamo API per caricare i jobs all'interno del componente quando viene montato
+import GetJobs from '@/api/GetJobs.api';
 
 /* 
 prendiamo la props passate dall'App.vue principale (limite di cardsjob da mostrare):
@@ -27,8 +28,19 @@ const props = defineProps({
     }
 });
 
-// rendiamo l'import json reattivo (array accessibile ora tramite .value)
-const jobs = ref(jobsDatas.jobs);
+
+// andiamo a fare una chiamata GET al json server (locale), per prendere tutti i jobs
+let jobs = ref([]);
+
+// al montaggio del componente, tramite la funzione onMounted(), andiamo a recuperare tramite GET tutti i jobs
+onMounted(async () => {
+    try {
+        const res = await GetJobs();
+        jobs.value = res;
+    } catch (error) {
+        console.log(error);
+    }
+})
 
 </script>
 
@@ -36,7 +48,7 @@ const jobs = ref(jobsDatas.jobs);
 
 
 <template>
-    <h2>i nostri lavori disponibili!</h2>
+    <h2>I Nostri Lavori Disponibili!</h2>
     <!-- 
     andiamo a ciclare temporaneo (usiamo il v-for="" vecchio dato che ogni jobs ha già un suo id come proprietà)
     *passiamo come props al figlio Cardjob.vue, l'oggetto contenente i dati di quel jobs 
@@ -54,7 +66,7 @@ const jobs = ref(jobsDatas.jobs);
         <button @click="showJobs(jobs.length)">Mostra tutti i jobs!</button>
     </div>
     <div v-else-if="props.allShowed && props.limit" class="buttonStyle">
-        <button @click="hideJobs()">Nascondi i jobs!</button>
+        <button @click="hideJobs(jobs.length)">Mostra meno jobs</button>
     </div>
 </template>
 
@@ -66,7 +78,6 @@ h2 {
     text-align: center;
     font-size: 35px;
     font-family: var(--font-title);
-    margin-bottom: 5px;
 }
 
 .container {
@@ -74,8 +85,8 @@ h2 {
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    gap: 20px;
-    margin: 70px auto 0;
+    gap: 30px;
+    margin: 70px auto 40px;
 }
 
 .buttonStyle {
@@ -84,10 +95,14 @@ h2 {
 }
 
 button {
-    width: 40%;
+    width: 15%;
     background-color: black;
     color: white;
-    padding: 10px 30px;
-    margin: 40px 0;
+    font-size: 18px;
+    font-family: var(--font-subtitle);
+    padding: 10px 0;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 </style>

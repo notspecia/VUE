@@ -16,7 +16,7 @@ defineProps({
 <template>
     <div class="card">
         <img :src="cardData.image" alt="Immagine della card">
-        <div class="card-content">
+        <div class="cardContent">
             <h3>{{ cardData.title }}</h3>
             <p>{{ cardData.text }} </p>
         </div>
@@ -28,16 +28,17 @@ defineProps({
 
 <style scoped>
 .card {
-    width: 350px;
-    border-radius: 10px;
+    width: 370px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s;
     background-color: green;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    transition: transform 0.3s;
+
 }
 
 .card:hover {
-    transform: scale(1.02);
+    transform: scale(1.04);
 }
 
 .card img {
@@ -45,26 +46,26 @@ defineProps({
     height: 220px;
 }
 
-.card-content {
+.cardContent {
     padding: 15px;
     background: #fff;
 }
 
-.card-content h3 {
+.cardContent h3 {
     font-size: 17px;
     font-weight: 600;
     font-family: var(--font-subtitle);
     margin-bottom: 15px;
 }
 
-.card-content p {
+.cardContent p {
     font-size: 14px;
     font-family: var(--font-text);
     line-height: 1.4;
 }
 
-.card-content h3,
-.card-content p {
+.cardContent h3,
+.cardContent p {
     text-align: center;
 }
 </style>

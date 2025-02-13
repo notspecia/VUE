@@ -37,9 +37,9 @@ h1 {
 }
 
 h4 {
-    font-weight: lighter;
-    font-size: 20px;
     text-align: center;
+    font-size: 20px;
+    font-weight: lighter;
     font-family: var(--font-subtitle);
     opacity: 0.5;
 }

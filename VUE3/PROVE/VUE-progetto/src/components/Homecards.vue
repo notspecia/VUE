@@ -1,6 +1,6 @@
 <script setup>
 // importiamo le card che andranno inserite all'interno di questo componente "Homecards.vue"
-import Card from './Card.vue';
+import Cardhome from './Cardhome.vue';
 
 // dati da passare a ogni singola Card component da renderizzare
 const datas = [
@@ -33,7 +33,7 @@ const datas = [
         *IMPORTANTE:
         utilizziamo ":" per passare un binding dinamico delle props invece di una stringa statica (come se stessimo utilizzando v-bind) 
         -->
-        <Card v-for="(data, index) of datas" :card-data="data" :key="index" />
+        <Cardhome v-for="(data, index) of datas" :card-data="data" :key="index" />
     </div>
 </template>
 
@@ -46,7 +46,7 @@ const datas = [
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    gap: 20px;
-    margin-top: 70px;
+    gap: 10px;
+    margin-top: 50px;
 }
 </style>
