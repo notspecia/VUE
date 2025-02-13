@@ -77,6 +77,7 @@ const reactiveDescription = computed(() => {
         -->
         <div class="button-read-more">
             <RouterLink :to="'/jobs/' + job.id" class="read-more-job">Leggi di più</RouterLink>
+            <i class="pi pi-eye" style="font-size: 1.1rem; color: white;"></i>
         </div>
     </div>
 </template>
@@ -151,6 +152,9 @@ button.read-less {
 
 /* bottone che porta a un nuovo componente che permette di leggere singolarmente la card di quel job */
 div.button-read-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 30%;
     background-color: green;
     text-align: center;
@@ -169,5 +173,6 @@ div.button-read-more {
     color: white;
     font-size: 16px;
     text-decoration: none;
+    margin-right: 10px;
 }
 </style>

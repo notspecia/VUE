@@ -86,7 +86,7 @@ h2 {
     justify-content: space-evenly;
     align-items: center;
     gap: 30px;
-    margin: 70px auto 40px;
+    margin: 50px auto 40px;
 }
 
 .buttonStyle {

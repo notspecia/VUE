@@ -17,14 +17,17 @@ const jobID = route.params.id;
 const job = ref({});
 
 // andiamo a creare il contenitore reattivo del job selezionato preso poi dalla GET
-onMounted(async () => {
-    try {
-        const res = await GetJob(jobID);
-        job.value = res;
-        console.log(job);
-    } catch (error) {
-        console.log(error.message);
-    }
+onMounted(() => {
+    setTimeout(async () => {
+        try {
+            const res = await GetJob(jobID);
+            job.value = res;
+            console.log(job);
+        } catch (error) {
+            console.log(error.message);
+        }
+    }, 1000)
+
 });
 
 </script>
@@ -61,14 +64,15 @@ onMounted(async () => {
         </div>
     </div>
 
-    <!-- todo possiamo mettere un loader nel frattempo che carica il json -->
-    <div v-else>
-        <p>caricamento...</p>
+    <!-- inserito un loader nel caso in cui l'oggetto job non sia stato ancora scaricato correttamente -->
+    <div v-else class="spinner">
+        <i class="pi pi-spin pi-spinner" style="font-size: 4rem"></i>
     </div>
 
     <!-- pulsante che permette di ritornare ai jobs -->
     <div class="button-return-jobs">
-        <RouterLink to="/jobs" class="return-job">Leggi di più</RouterLink>
+        <RouterLink to="/jobs" class="return-job">Torna ai jobs</RouterLink>
+        <i class="pi pi-arrow-left" style="font-size: 1.1rem; color: white;"></i>
     </div>
 </template>
 
@@ -105,7 +109,7 @@ onMounted(async () => {
 .job-description,
 .job-salary,
 .company-info {
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .job-image {
@@ -139,14 +143,25 @@ h3 {
     font-weight: bold;
 }
 
+/* style per l'icona di spinner */
+div.spinner {
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* bottone che renderizza di nuovo alla pagina del jobs */
 div.button-return-jobs {
-    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
     background-color: green;
     text-align: center;
-    padding: 10px;
+    padding: 20px 10px;
     border-radius: 10px;
-    margin: 10px auto;
+    margin: 30px auto;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
 
@@ -157,8 +172,9 @@ div.button-return-jobs {
 
 .return-job {
     color: white;
-    font-size: 16px;
+    font-size: 18px;
     font-family: var(--font-subtitle);
     text-decoration: none;
+    margin-right: 10px;
 }
 </style>

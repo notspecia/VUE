@@ -1,7 +1,9 @@
 import './assets/reset.css'
 import './assets/main.css'
-import router from './router'
+import 'primeicons/primeicons.css'
 
+// importiamo le rotte impostare dentro il file index.js 
+import router from './router'
 
 // per poter utilizzare istanze o applicarle all'app creiamo una costante e non montiamo direttamente l'App.vue
 import { createApp } from 'vue'

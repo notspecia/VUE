@@ -19,12 +19,15 @@ al posto di :href usiamo l'attributo -> to="" cosi diventerà una SPA senza rica
             <ul>
                 <li>
                     <RouterLink to="/">Home</RouterLink>
+                    <i class="pi pi-home" style="font-size: 1.3rem; color: white;"></i>
                 </li>
                 <li>
                     <RouterLink to="/jobs">Jobs</RouterLink>
+                    <i class="pi pi-briefcase" style="font-size: 1.1rem; color: white;"></i>
                 </li>
                 <li>
                     <RouterLink to="/addJobs">Add Jobs</RouterLink>
+                    <i class="pi pi-plus" style="font-size: 0.9rem; color: white;"></i>
                 </li>
             </ul>
         </nav>
@@ -63,6 +66,10 @@ tramite display: inline-block */
 header nav ul li {
     display: inline-block;
     padding: 0 30px;
+}
+
+header nav ul li i {
+    margin-left: 5px;
 }
 
 header nav ul li a {

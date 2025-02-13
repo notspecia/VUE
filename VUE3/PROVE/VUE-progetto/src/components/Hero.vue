@@ -33,7 +33,8 @@ h1 {
     text-align: center;
     font-size: 45px;
     font-family: var(--font-title);
-    margin-bottom: 5px;
+    margin-bottom: 25px;
+    margin-top: 250px;
 }
 
 h4 {
