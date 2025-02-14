@@ -17,11 +17,13 @@ const props = defineProps({
 - esempio cliccando un bottone nelaìla card permette di leggere + info sulla descrizione del job
 */
 
-/* settiamo un flag che cambia quando viene cliccato il bottone per "read more", è reattivo,
-e al cambiamento di esso viene eseguito il computed(), restituendo la descrizione piena */
+/*
+settiamo un flag che cambia quando viene cliccato il bottone per "read more", è reattivo,
+e al cambiamento di esso viene eseguito il computed(), restituendo la descrizione piena 
+*/
 const showFullDescription = ref(false);
 
-// METODO che modifica lo stato di rettività del flag "showFullDescription" a true e false, eseguendo il computed()
+// EVENTO che modifica lo stato di rettività del flag "showFullDescription" a true e false, eseguendo il computed()
 const handleReading = () => {
     showFullDescription.value = !showFullDescription.value;
 }

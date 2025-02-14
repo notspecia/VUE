@@ -1,9 +1,26 @@
 <script setup>
 // ORA AL POSTO di usare i link normali con in vanilla <a :href""/>, usiamo la funzione Routerlink importata da VUE
-import { RouterLink } from "vue-router";
+// importiamo anche la funzione useRoute() per riuscire ad accedere al path delle rotte applicando active per colorare la sezione scelta
+import { RouterLink, useRoute } from "vue-router";
 
 // importiamo il logo all'interno del componente in assets/ (è != se fosse all'interno di public/) con v-bind (:src)
 import vueLogo from "@/assets/logos/vue-logo.png";
+
+
+/*
+funzione evocata ogni volta montato il componente navbar, passiamo come parametro il path di quella view, se corrisponde a quello
+della route in cui ci troviamo, ottiene dello style per evidenziarla (CONDIZIONE STATEMENT TERNARIO VALORE TRUE)
+returniamo un booleano "true/false" in base se la rotta passata come parametro === alla route attuale
+*/
+const isActiveLink = (routePath) => {
+    const route = useRoute();
+
+    return route.path === routePath;
+}
+
+
+
+
 </script>
 
 
@@ -15,17 +32,21 @@ al posto di :href usiamo l'attributo -> to="" cosi diventerà una SPA senza rica
 <template>
     <header>
         <RouterLink id="logo" to="/"><img :src="vueLogo" alt="logo"></RouterLink>
+        <!-- 
+        *APPLICHIAMO DELLO STYLE INLINE, se la condizione in ogni <li> è true per verificare se il path suo è quello di dove
+        *ci si trova a momento 
+        -->
         <nav>
             <ul>
-                <li>
+                <li :style="isActiveLink('/') ? { backgroundColor: 'rgb(0, 81, 0)', borderRadius: '10px' } : {}">
                     <RouterLink to="/">Home</RouterLink>
-                    <i class="pi pi-home" style="font-size: 1.3rem; color: white;"></i>
+                    <i class="pi pi-home" style="font-size: 1.1rem; color: white;"></i>
                 </li>
-                <li>
+                <li :style="isActiveLink('/jobs') ? { backgroundColor: 'rgb(0, 81, 0)', borderRadius: '10px' } : {}">
                     <RouterLink to="/jobs">Jobs</RouterLink>
                     <i class="pi pi-briefcase" style="font-size: 1.1rem; color: white;"></i>
                 </li>
-                <li>
+                <li :style="isActiveLink('/addJobs') ? { backgroundColor: 'rgb(0, 81, 0)', borderRadius: '10px' } : {}">
                     <RouterLink to="/addJobs">Add Jobs</RouterLink>
                     <i class="pi pi-plus" style="font-size: 0.9rem; color: white;"></i>
                 </li>
@@ -48,7 +69,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(230deg, black, green);
+    background: linear-gradient(210deg, black, green);
     position: fixed;
     width: 100%;
     top: 0;
@@ -60,12 +81,11 @@ header {
     border-bottom-right-radius: 40px;
 }
 
-
 /* mettiamo un po di spazio tra i link tramite altro padding, e allineamoli sulla stessa riga
 tramite display: inline-block */
 header nav ul li {
     display: inline-block;
-    padding: 0 30px;
+    padding: 10px 25px;
 }
 
 header nav ul li i {

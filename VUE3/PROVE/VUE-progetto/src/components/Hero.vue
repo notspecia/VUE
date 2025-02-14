@@ -23,6 +23,7 @@ defineProps({
 <template>
     <h1>{{ title }}</h1>
     <h4>{{ subtitle }}</h4>
+    <slot />
 </template>
 
 
@@ -34,7 +35,7 @@ h1 {
     font-size: 45px;
     font-family: var(--font-title);
     margin-bottom: 25px;
-    margin-top: 250px;
+    margin-top: 200px;
 }
 
 h4 {

@@ -45,6 +45,9 @@ Ora si dovrebbe avere il primo progetto Vue in esecuzione! Nota che i componenti
 
 
 
+# ref() VS reactive()
+![immagine appunti]("./Immagine 2025-02-14 164523.png")
+
 # Computed() funzione
 In Vue 3 con Composition API, la funzione **computed()** viene utilizzata per `creare proprietà computate (computed properties)`. Queste *proprietà vengono ricalcolate solo quando le loro dipendenze cambiano*, rendendole più efficienti rispetto ai metodi normali.
 esempio:
@@ -72,3 +75,22 @@ comando per installare i pacchetti per poterlo utilizzare in VUE:
 ```cmd
 npm i vue-router
 ```
+
+
+
+# Confronto utilizzo e sintassi REACT vs VUE
+[link del video di youtube clicca qui](https://www.youtube.com/watch?v=VldVWN2i710)
+
+- emittare props da padre a figlio: *defineEmits()*
+
+- `<slot />`: possiamo usarlo e riciclarlo, per renderizzare direttamente del contenuto passato dal Genitore come se fosse una props, esempio:
+```vue
+<!-- View Home (padre) -->
+<Hero>prova text content slot riusabile</Hero>
+
+<!-- Componente Hero (figlio), <slot/> contiene: "prova text content slot riusabile" -->
+<template>
+    <slot />
+</template>
+```
+- vantaggio di usare *v-model*: permette di associare una variabile reattiva resa tramite ref(), collegare essa al value dell'input tramite: `v-model="name"`, essa cambierà valora ogni volta che l'input verrà modficato, grazie al 2 way data binding effettuato da VUE tramite il v-model
