@@ -39,7 +39,7 @@ const router = createRouter({
             component: AddJobs
         }, 
         {
-            path: "/:catchAll(.*)",
+            path: "/:catchAll(.*)", // catchiamo tutte le rotte != da quelle definite
             name: "not-found",
             component: Notfound
         }

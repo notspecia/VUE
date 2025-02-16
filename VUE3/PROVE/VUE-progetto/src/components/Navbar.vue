@@ -38,15 +38,17 @@ al posto di :href usiamo l'attributo -> to="" cosi diventerà una SPA senza rica
         -->
         <nav>
             <ul>
-                <li :style="isActiveLink('/') ? { backgroundColor: 'rgb(0, 81, 0)', borderRadius: '10px' } : {}">
+                <li :style="isActiveLink('/') ? { backgroundColor: 'rgb(0, 81, 0, 0.5)', borderRadius: '10px' } : {}">
                     <RouterLink to="/">Home</RouterLink>
                     <i class="pi pi-home" style="font-size: 1.1rem; color: white;"></i>
                 </li>
-                <li :style="isActiveLink('/jobs') ? { backgroundColor: 'rgb(0, 81, 0)', borderRadius: '10px' } : {}">
+                <li
+                    :style="isActiveLink('/jobs') ? { backgroundColor: 'rgb(0, 81, 0, 0.5)', borderRadius: '10px' } : {}">
                     <RouterLink to="/jobs">Jobs</RouterLink>
                     <i class="pi pi-briefcase" style="font-size: 1.1rem; color: white;"></i>
                 </li>
-                <li :style="isActiveLink('/addJobs') ? { backgroundColor: 'rgb(0, 81, 0)', borderRadius: '10px' } : {}">
+                <li
+                    :style="isActiveLink('/addJobs') ? { backgroundColor: 'rgb(0, 81, 0, 0.5)', borderRadius: '10px' } : {}">
                     <RouterLink to="/addJobs">Add Jobs</RouterLink>
                     <i class="pi pi-plus" style="font-size: 0.9rem; color: white;"></i>
                 </li>

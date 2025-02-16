@@ -1,33 +1,38 @@
 <script setup>
 
 // andiamo ad importare la funzione useRoute(), che permette di accedere ai parametri dell'URL (ci serve per prendere l'id del job selezionato)
-import { onMounted, ref } from 'vue';
+import { onMounted, reactive } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
-
+// importazione dell'API script, per caricare il singolo job della view (passando l'ID grazie alla route)
 import GetJob from '@/api/GetJob.api';
+
+
+// variabile che conterrà l'oggetto del job, caricato tramite GET dopo monraggio del componente
+const stateJob = reactive({
+    job: {},
+    isLoading: true
+});
 
 
 // assegnamo la route ad una variabile
 const route = useRoute();
-
 // assegnamo ad una variabile l'id della rotta (ci servirà per la GET del job selezionato)
 const jobID = route.params.id;
 
-// variabile che conterrà l'oggetto del job, caricato tramite GET dopo monraggio del componente
-const job = ref({});
 
 // andiamo a creare il contenitore reattivo del job selezionato preso poi dalla GET
 onMounted(() => {
     setTimeout(async () => {
         try {
             const res = await GetJob(jobID);
-            job.value = res;
+            stateJob.job = res;
             console.log(job);
         } catch (error) {
             console.log(error.message);
+        } finally {
+            stateJob.isLoading = false;
         }
     }, 1000)
-
 });
 
 </script>
@@ -36,43 +41,50 @@ onMounted(() => {
 
 
 <template>
+
     <!-- attendiamo che job e job.company (oggetto nestato) siano caricati correttamente! altrimenti mostriamo un loader! -->
-    <div v-if="job && job.company" class="job-detail">
-        <h3>{{ job.title }}</h3>
-        <p class="job-type">{{ job.type }}</p>
-        <p class="job-location">{{ job.location }}</p>
+    <div v-if="stateJob.job && stateJob.job.company">
 
-        <div class="job-image">
-            <img :src="job.image" alt="image of the job">
+        <div class="job-detail">
+            <!-- desctizione della card con tutte le proprietà del JOB caricato -->
+            <h3>{{ stateJob.job.title }}</h3>
+            <p class="job-type">{{ stateJob.job.type }}</p>
+            <p class="job-location">{{ stateJob.job.location }}</p>
+
+            <div class="job-image">
+                <img :src="stateJob.job.image" alt="image of the job">
+            </div>
+
+            <div class="job-description">
+                <h3>Description</h3>
+                <p>{{ stateJob.job.description }}</p>
+            </div>
+
+            <div class="job-salary">
+                <h3>Salary</h3>
+                <p>{{ stateJob.job.salary }}</p>
+            </div>
+
+            <div class="company-info">
+                <h3>Company</h3>
+                <p>{{ stateJob.job.company.description }}</p>
+                <p><strong>Email:</strong> {{ stateJob.job.company.contactEmail }}</p>
+                <p><strong>Phone:</strong> {{ stateJob.job.company.contactPhone }}</p>
+            </div>
         </div>
 
-        <div class="job-description">
-            <h3>Description</h3>
-            <p>{{ job.description }}</p>
+        <!-- pulsante che permette di ritornare ai jobs -->
+        <div class="button-return-jobs">
+            <RouterLink to="/jobs" class="return-job">Torna ai jobs</RouterLink>
+            <i class="pi pi-arrow-left" style="font-size: 1.1rem; color: white;"></i>
         </div>
 
-        <div class="job-salary">
-            <h3>Salary</h3>
-            <p>{{ job.salary }}</p>
-        </div>
-
-        <div class="company-info">
-            <h3>Company</h3>
-            <p>{{ job.company.description }}</p>
-            <p><strong>Email:</strong> {{ job.company.contactEmail }}</p>
-            <p><strong>Phone:</strong> {{ job.company.contactPhone }}</p>
-        </div>
     </div>
+
 
     <!-- inserito un loader nel caso in cui l'oggetto job non sia stato ancora scaricato correttamente -->
     <div v-else class="spinner">
         <i class="pi pi-spin pi-spinner" style="font-size: 4rem"></i>
-    </div>
-
-    <!-- pulsante che permette di ritornare ai jobs -->
-    <div class="button-return-jobs">
-        <RouterLink to="/jobs" class="return-job">Torna ai jobs</RouterLink>
-        <i class="pi pi-arrow-left" style="font-size: 1.1rem; color: white;"></i>
     </div>
 </template>
 
@@ -145,7 +157,7 @@ h3 {
 
 /* style per l'icona di spinner */
 div.spinner {
-    height: 85vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;

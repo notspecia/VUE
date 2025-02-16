@@ -1,7 +1,7 @@
 <script setup>
 import { ref, defineProps, computed } from 'vue';
 
-
+// prendiamo come props, il job passato dal genitore "Joblisting.vue"
 const props = defineProps({
     job: {
         type: Object,
@@ -43,9 +43,6 @@ const reactiveDescription = computed(() => {
     return description; // returniamo la descrizione elaborata al cambiamento del flag -> "showFullDescription"
 });
 
-
-
-
 </script>
 
 
@@ -53,10 +50,10 @@ const reactiveDescription = computed(() => {
 
 <template>
     <div class="card">
-        <h3>{{ job.title }}</h3>
-        <p class="job-location">Location: {{ job.location }}</p>
-        <p class="job-type">Type: {{ job.type }}</p>
-        <p class="job-salary">Salary: {{ job.salary }} </p>
+        <h3>{{ props.job.title }}</h3>
+        <p class="job-location">Location: {{ props.job.location }}</p>
+        <p class="job-type">Type: {{ props.job.type }}</p>
+        <p class="job-salary">Salary: {{ props.job.salary }} </p>
         <p class="job-description">Description:{{ reactiveDescription }} </p>
         <!-- 
         aggiungiamo un metodo a un RouterLink, che al click va a:
@@ -69,16 +66,17 @@ const reactiveDescription = computed(() => {
             <button v-else class="read-less" @click="handleReading()">Read Less</button>
         </div>
         <div class="company-info">
-            <p class="company-name">Company: {{ job.company.name }} </p>
-            <p class="company-description">{{ job.company.description }}</p>
-            <p class="contact-email">Contact Email: {{ job.company.contactEmail }} </p>
-            <p class="contact-phone">Contact Phone: {{ job.company.contactPhone }} </p>
+            <p class="company-name">Company: {{ props.job.company.name }} </p>
+            <p class="company-description">{{ props.job.company.description }}</p>
+            <p class="contact-email">Contact Email: {{ props.job.company.contactEmail }} </p>
+            <p class="contact-phone">Contact Phone: {{ props.job.company.contactPhone }} </p>
         </div>
-        <!-- settiamo anche il Router link per il bottone che porta a schermo completamente LE INFORMAZIONI DI QUEL JOB, provare se:
+        <!-- 
+        settiamo anche il Router link per il bottone che porta a schermo completamente LE INFORMAZIONI DI QUEL JOB, provare se:
         - creare una nuova viwe con una rotta predefinita o boh 
         -->
         <div class="button-read-more">
-            <RouterLink :to="'/jobs/' + job.id" class="read-more-job">Leggi di più</RouterLink>
+            <RouterLink :to="'/jobs/' + props.job.id" class="read-more-job">Leggi di più</RouterLink>
             <i class="pi pi-eye" style="font-size: 1.1rem; color: white;"></i>
         </div>
     </div>
