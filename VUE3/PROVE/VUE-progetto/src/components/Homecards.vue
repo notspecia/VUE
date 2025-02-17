@@ -1,6 +1,6 @@
 <script setup>
 // importiamo le card che andranno inserite all'interno di questo componente "Homecards.vue"
-import Cardhome from './Cardhome.vue';
+import CardHome from '@/components/Cardhome.vue';
 
 // dati da passare a ogni singola Card component da renderizzare
 const datas = [
@@ -33,7 +33,7 @@ const datas = [
         *IMPORTANTE:
         utilizziamo ":" per passare un binding dinamico delle props invece di una stringa statica (come se stessimo utilizzando v-bind) 
         -->
-        <Cardhome v-for="(data, index) of datas" :card-data="data" :key="index" />
+        <CardHome v-for="(data, index) of datas" :card-data="data" :key="index" />
     </div>
 </template>
 

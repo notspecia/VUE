@@ -3,11 +3,14 @@ import { createRouter, createWebHistory } from "vue-router";
 
 
 // importiamo le varie views COMPONENTS, all'interno di questo script per abilitare il routing e le sue azioni!
-import Home from "@/views/Home.vue";
-import Jobs from "@/views/Jobs.vue";
-import AddJobs from "@/views/AddJobs.vue";
-import Jobdetails from "@/views/Jobdetails.vue";
-import Notfound from "@/views/Notfound.vue";
+import HomeView from "@/views/HomeView.vue";
+import JobsView from "@/views/JobsView.vue";
+import JobDetailsView from "@/views/JobdetailsView.vue";
+import AddJobsView from "@/views/AddJobsView.vue";
+import DeletejobView from "@/views/DeletejobView.vue";
+import EditjobView from "@/views/EditjobView.vue";
+import NotfoundView from "@/views/NotfoundView.vue";
+
 
 /* 
 * creiamo un istanza di routing tramite il createRouter(), inserendo un oggetto di configurazione con:
@@ -21,27 +24,39 @@ const router = createRouter({
         {
             path: "/",
             name: "home",
-            component: Home
+            component: HomeView
         },
         {
             path: "/jobs",
             name: "jobs",
-            component: Jobs
+            component: JobsView
         },
         { 
             path: '/jobs/:id', 
             name: 'jobDetail', 
-            component: Jobdetails, 
+            component: JobDetailsView, 
         },
         {
             path: "/addJobs",
             name: "addJobs",
-            component: AddJobs
+            component: AddJobsView
         }, 
+        // path di VIEWS accessibili all'interno di "Jobdetails.vue" per modificare/cancellare il job selezionato
         {
-            path: "/:catchAll(.*)", // catchiamo tutte le rotte != da quelle definite
+            path: "/jobs/edit/:id",
+            name: "editJob",
+            component: EditjobView
+        },
+        {
+            path: "/jobs/delete/:id",
+            name: "deleteJob",
+            component: DeletejobView
+        },
+        // catchiamo tutte le rotte != da quelle definite, renderizzando a una pagina personalizzata 404
+        {
+            path: "/:catchAll(.*)",
             name: "not-found",
-            component: Notfound
+            component: NotfoundView
         }
 
     ]

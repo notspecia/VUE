@@ -51,7 +51,10 @@ const reactiveDescription = computed(() => {
 <template>
     <div class="card">
         <h3>{{ props.job.title }}</h3>
-        <p class="job-location">Location: {{ props.job.location }}</p>
+        <p class="job-location">
+            Location: {{ props.job.location }}
+            <i class="pi pi-map-marker" style="color: green; font-size: 1rem;"></i>
+        </p>
         <p class="job-type">Type: {{ props.job.type }}</p>
         <p class="job-salary">Salary: {{ props.job.salary }} </p>
         <p class="job-description">Description:{{ reactiveDescription }} </p>
@@ -72,8 +75,8 @@ const reactiveDescription = computed(() => {
             <p class="contact-phone">Contact Phone: {{ props.job.company.contactPhone }} </p>
         </div>
         <!-- 
-        settiamo anche il Router link per il bottone che porta a schermo completamente LE INFORMAZIONI DI QUEL JOB, provare se:
-        - creare una nuova viwe con una rotta predefinita o boh 
+        settiamo anche il Router link per il bottone che porta a schermo completamente LE INFORMAZIONI DI QUEL JOB
+        un una view a parte singola nella rotta "/jobs/job/JOB.ID" all'interno della view "Jobsdetails.vue"
         -->
         <div class="button-read-more">
             <RouterLink :to="'/jobs/' + props.job.id" class="read-more-job">Leggi di più</RouterLink>
@@ -159,7 +162,7 @@ div.button-read-more {
     background-color: green;
     text-align: center;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     margin-top: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;

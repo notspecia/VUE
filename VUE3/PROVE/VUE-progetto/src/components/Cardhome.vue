@@ -2,6 +2,7 @@
 // importiamo e memorizziamo i dati props passati dal genitore container "Homecards.vue"
 import { defineProps } from 'vue';
 
+// prendiamo come props i dati della card presi dall'array di {} statico, con i card datas
 defineProps({
     cardData: {
         type: Object,
@@ -34,7 +35,6 @@ defineProps({
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     transition: transform 0.3s;
-
 }
 
 .card:hover {

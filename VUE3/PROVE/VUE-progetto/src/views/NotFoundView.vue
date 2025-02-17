@@ -10,7 +10,7 @@ import { RouterLink } from "vue-router";
     <div class="notFound">
         <i class="pi pi-exclamation-triangle icon"></i>
         <h1>404</h1>
-        <p>Oops! The page you are looking for does not exist.</p>
+        <p>Oops! The source you are looking for does not exist.</p>
         <RouterLink to="/" class="homeButton">Go back home</RouterLink>
     </div>
 </template>

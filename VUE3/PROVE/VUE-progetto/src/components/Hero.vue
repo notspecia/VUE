@@ -14,7 +14,7 @@ defineProps({
         type: String,
         default: "Missing subtitle props"
     }
-})
+});
 </script>
 
 

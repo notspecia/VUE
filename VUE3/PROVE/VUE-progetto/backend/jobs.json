@@ -1,7 +1,7 @@
 {
   "jobs": [
     {
-      "id": "1",
+      "id": 1,
       "title": "Senior Vue Dev",
       "type": "Full-Time",
       "location": "Boston, MA",
@@ -16,7 +16,7 @@
       "image": "https://recruit.hennge.com/wp-content/uploads/2024/08/0922_360.jpg"
     },
     {
-      "id": "2",
+      "id": 2,
       "title": "Front-End Engineer (Vue)",
       "type": "Full-Time",
       "description": "Join our team as a Front-End Developer in sunny Miami, FL. We are looking for a motivated individual with a passion for crafting beautiful and responsive web applications. Experience with UI/UX design principles and a strong attention to detail are highly desirable.",
@@ -31,7 +31,7 @@
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV4mIujoVBDtGHgZeXhGoNLReN7fUjFgZPLmQ1FiQiJbP7rqXdlnOfOuAlqpYkpa10bUU&usqp=CAU"
     },
     {
-      "id": "3",
+      "id": 3,
       "title": "Vue.js Developer",
       "type": "Full-Time",
       "description": "Are you passionate about front-end development? Join our team in vibrant Brooklyn, NY, and work on exciting projects that make a difference. We offer competitive compensation and a collaborative work environment where your ideas are valued.",
@@ -46,7 +46,7 @@
       "image": "https://t3.ftcdn.net/jpg/03/18/60/62/360_F_318606217_Hk8jo2MVoI33SQOkYrfOF929J7JgIP0P.jpg"
     },
     {
-      "id": "4",
+      "id": 4,
       "title": "Vue Front-End Developer",
       "type": "Part-Time",
       "description": "Join our team as a Part-Time Front-End Developer in beautiful Pheonix, AZ. We are looking for a self-motivated individual with a passion for creating engaging user experiences. This position offers flexible hours and the opportunity to work remotely.",
@@ -61,7 +61,7 @@
       "image": "https://www.purestorage.com/content/dam/purestorage/knowledge/what-is-micro-frontend.jpg.imgo.jpg"
     },
     {
-      "id": "5",
+      "id": 5,
       "title": "Full Stack Vue Developer",
       "type": "Full-Time",
       "description": "Exciting opportunity for a Full-Time Front-End Developer in bustling Atlanta, GA. We are seeking a talented individual with a passion for building elegant and scalable web applications. Join our team and make an impact!",
@@ -76,7 +76,7 @@
       "image": "https://media.licdn.com/dms/image/v2/D4D12AQF5Q2VLuhmVeQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1729355857071?e=2147483647&v=beta&t=IVLb9oHNZdHf4SkI6vgW4iPZPu8OooDOMR4HHA8Z5Ug"
     },
     {
-      "id": "6",
+      "id": 6,
       "title": "Vue Native Developer",
       "type": "Full-Time",
       "description": "Join our team as a Front-End Developer in beautiful Portland, OR. We are looking for a skilled and enthusiastic individual to help us create innovative web solutions. Competitive salary and great benefits package available.",
@@ -89,6 +89,66 @@
         "contactPhone": "555-555-5555"
       },
       "image": "https://aulab.it/wp-content/uploads/2023/03/Come-diventare-un-front-end-developer-4-cover-1024x576.jpg"
+    },
+    {
+      "id": 7,
+      "title": "fsd",
+      "type": "Full-Time",
+      "location": "Chicago",
+      "description": "cioa cioa ciaoc aociaociaoad isofjdo fdj fodsf sa  kcioa come avaallo luigi mario",
+      "salary": "$150K - $175K",
+      "company": {
+        "name": "Lethal company",
+        "description": "AOAOAOOAOA aoaoaoaoa è regolarereeee",
+        "contactEmail": "fdsfsd@sd",
+        "contactPhone": "2234456454"
+      },
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMtU5YxR5T8oIG8M87FRTM_Nx4e3wCIZaPFQ&s"
+    },
+    {
+      "title": "JDKLSAFJòSDFS",
+      "type": "Remote",
+      "location": "fdsghjk",
+      "description": "ghjklhjytrew",
+      "salary": "$175K - $200K",
+      "company": {
+        "name": "fdsds",
+        "description": "fdsfsfd",
+        "contactEmail": "fdsfsd@sd",
+        "contactPhone": "2234456454"
+      },
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmhwvEGSzZ88tW-Uf9eTqBxDtLUD4feeq4Wg&s",
+      "id": 9
+    },
+    {
+      "title": "Dilussss frontend",
+      "type": "Part-Time",
+      "location": "Italy, RO",
+      "description": "What is Lorem Ipsum?\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "salary": "$150K - $175K",
+      "company": {
+        "name": "Dilus company",
+        "description": "m has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the l",
+        "contactEmail": "gabspec@gmail.com",
+        "contactPhone": "3384465353"
+      },
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxxgI895PuInu6ZEJQRatLaCzIhBoN3sK0Uw&s",
+      "id": 10
+    },
+    {
+      "title": "Ciaone",
+      "type": "Full-Time",
+      "location": "Italy, RO",
+      "description": "fdsdgg",
+      "salary": "$175K - $200K",
+      "company": {
+        "name": "sfsdfsdfssf",
+        "description": "// in caso di successo, aggiunto a schermo un toast che notifica il successo// in caso di successo, aggiunto a schermo un toast che notifica il successo// in caso di successo, aggiunto a schermo un toast che notifica il successo",
+        "contactEmail": "fkdsfsd@gmail.com",
+        "contactPhone": "3384465353"
+      },
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmhwvEGSzZ88tW-Uf9eTqBxDtLUD4feeq4Wg&s",
+      "id": 11
     }
   ]
 }

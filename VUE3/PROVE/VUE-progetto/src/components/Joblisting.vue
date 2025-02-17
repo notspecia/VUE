@@ -6,13 +6,15 @@ importiamo:
 - onMounted(): per eseguire la callback function al suo interno
 - ref(): per rendere le variabili reattive modificandole tramite il .value + events listeners
 - defineEmits(): per definire gli emitters
+- useRouter(): per gestire errori di caricamento e renderizzamento in caso alla pagina 404 errore
 */
 import { defineProps, onMounted, reactive, defineEmits } from 'vue';
+import { useRouter } from 'vue-router';
+
 // importiamo il componente Cardjob che renderizzera i dati dei jobs
-import Cardjob from './Cardjob.vue';
+import CardJob from '@/components/Cardjob.vue';
 // importiamo API script, per caricare i jobs all'interno del componente quando viene montato
 import GetJobs from '@/api/GetJobs.api';
-
 
 // * ---------------------------------------------------
 
@@ -41,6 +43,9 @@ let stateJobs = reactive({
     isLoading: true
 })
 
+// in caso il fetching andrebbe male, renderizziamo nel catch{} alla pagina 404 personalizzata
+const router = useRouter();
+
 // al montaggio del componente, tramite la funzione onMounted(), andiamo a recuperare tramite GET tutti i jobs
 onMounted(async () => {
     try {
@@ -48,6 +53,7 @@ onMounted(async () => {
         stateJobs.jobs = res;
     } catch (error) {
         console.log(error);
+        router.push("/not-found"); // in caso di errore fetching, renderizza alla schermata 404 personalizzata
     } finally {
         stateJobs.isLoading = false;
     }
@@ -60,7 +66,7 @@ onMounted(async () => {
 // definizione degli emitters[] passati come props che contengono l'evento nel genitore per la modifica di "limit"
 const emit = defineEmits(["show", "hide"]);
 
-// funzioni per passare gli emits + length dei jobs al genitore
+// funzioni per passare gli emits + length dei jobs al genitore "HomeView.vue"
 const handleShowJobs = (length) => {
     emit("show", length)
 }
@@ -90,7 +96,7 @@ const handleHideJobs = (length) => {
         *se il valore limit non è true (quindi non viene trovato), allora va a renderizzare tutti i jobs
         -->
         <div class="container">
-            <Cardjob v-for="job of stateJobs.jobs.slice(0, limit || stateJobs.jobs.length)" :key="job.id" :job="job" />
+            <CardJob v-for="job of stateJobs.jobs.slice(0, limit || stateJobs.jobs.length)" :key="job.id" :job="job" />
         </div>
 
         <!-- 
@@ -99,16 +105,20 @@ const handleHideJobs = (length) => {
         - true: andiamo a mostrare il bottone che permette di nascodere i jobs tornando a mostrarne solo 3  
         -->
         <div v-if="!props.allShowed && props.limit" class="buttonStyle">
-            <button @click="handleShowJobs(stateJobs.jobs.length)">Mostra tutti i jobs!</button>
+            <button @click="handleShowJobs(stateJobs.jobs.length)">
+                Mostra <i class="pi pi-plus" style="color: rgb(54, 54, 54); font-size: 0.9rem;"></i> jobs
+            </button>
         </div>
         <div v-else-if="props.allShowed && props.limit" class="buttonStyle">
-            <button @click="handleHideJobs(stateJobs.jobs.length)">Mostra meno jobs</button>
+            <button @click="handleHideJobs(stateJobs.jobs.length)">
+                Mostra <i class="pi pi-minus" style="color: rgb(54, 54, 54); font-size: 0.9rem;"></i> jobs
+            </button>
         </div>
 
     </div>
 
 
-    <!-- inserito un loader nel caso in cui i jobs non siano stati ancora caricati correttamente!! -->
+    <!-- inserito un loader nel caso in cui i jobs non siano stati ancora caricati completamente -->
     <div v-else class="spinner">
         <i class="pi pi-spin pi-spinner" style="font-size: 4rem"></i>
     </div>
@@ -140,14 +150,17 @@ h2 {
 
 button {
     width: 15%;
-    background-color: black;
-    color: white;
-    font-size: 18px;
+    color: rgb(54, 54, 54);
+    font-size: 20px;
     font-family: var(--font-subtitle);
     padding: 10px 0;
-    border: none;
+    border: 1px solid black;
     border-radius: 10px;
     margin-bottom: 20px;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 /* style per l'icona di spinner */
