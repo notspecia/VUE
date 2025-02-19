@@ -43,7 +43,7 @@ onMounted(async () => {
 <template>
 
     <!-- attendiamo che job e job.company (oggetto nestato) siano caricati correttamente! altrimenti mostriamo un loader! -->
-    <div v-if="stateJob.job && stateJob.job.company">
+    <div v-if="!stateJob.isLoading && stateJob.job && stateJob.job.company">
 
         <!-- pulsante/collegamento component, che permette di ritornare ai jobs -->
         <BackButton />
@@ -86,7 +86,7 @@ onMounted(async () => {
 
     <!-- inserito un loader nel caso in cui l'oggetto job non sia stato ancora scaricato correttamente -->
     <div v-else class="spinner">
-        <i class="pi pi-spin pi-spinner" style="font-size: 4rem"></i>
+        <i class="pi pi-spin pi-spinner"></i>
     </div>
 </template>
 
@@ -98,21 +98,22 @@ onMounted(async () => {
 .job-container {
     display: flex;
     column-gap: 10px;
-    max-width: 75%;
-    box-shadow: 0 4px 10px 2px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    border-radius: 10px;
+    max-width: 70%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 3px 7px 8px 2px rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
     margin: 0 auto 100px;
 }
 
 .job-detail {
-    width: 65%;
+    width: 75%;
+    padding: 20px;
 }
 
 .job-detail h3.job-title {
     color: #333;
     text-align: center;
-    font-size: 35px;
+    font-size: 38px;
     font-weight: 600;
     font-family: var(--font-title);
     margin-bottom: 10px;
@@ -120,32 +121,36 @@ onMounted(async () => {
 
 .job-type,
 .job-location {
-    font-size: 18px;
     color: #777;
     text-align: center;
+    font-size: 19px;
+    font-family: var(--font-text);
     margin-bottom: 10px;
 }
 
 .job-description,
 .job-salary,
 .company-info {
+    font-size: 15px;
+    font-family: var(--font-text);
     margin-top: 50px;
 }
 
 .job-image {
     display: flex;
     justify-content: center;
+    margin-top: 30px;
 }
 
 .job-image img {
     width: 50%;
-    height: 250px;
-    border-radius: 10px;
+    height: 260px;
+    border-radius: 7px;
 
 }
 
 h3 {
-    font-size: 24px;
+    font-size: 25px;
     font-family: var(--font-subtitle);
     color: green;
     margin: 30px 0 10px;
@@ -155,15 +160,17 @@ h3 {
 .job-salary p,
 .company-info p {
     font-size: 18px;
-    line-height: 1.6;
+    line-height: 1.5;
     color: #555;
 }
+
+
 
 .company-info p strong {
     font-weight: bold;
 }
 
-/* style per l'icona di spinner */
+/* style per l'icona di spinner, occuperà tutto lo schermo quando carica il job definito all'interno della route */
 div.spinner {
     height: 100vh;
     display: flex;

@@ -35,8 +35,8 @@ const reactiveDescription = computed(() => {
     // inizialmente diamo come valore PIENO la descrizione del job passato come prop dal genitore
     let description = props.job.description;
 
-    // verifichiamo il flag, se è false (READ MORE deve essere ancora cliccato), TRONCHIAMO la frase
-    if (!showFullDescription.value) {
+    // verifichiamo il flag, se è false (READ MORE deve essere ancora cliccato), TRONCHIAMO la frase + la frase deve essere almeno > di 90 caratteri!
+    if (!showFullDescription.value && description.length > 90) {
         description = `${description.slice(0, 90)}...`;
     }
 
@@ -57,30 +57,26 @@ const reactiveDescription = computed(() => {
         </p>
         <p class="job-type">Type: {{ props.job.type }}</p>
         <p class="job-salary">Salary: {{ props.job.salary }} </p>
-        <p class="job-description">Description:{{ reactiveDescription }} </p>
+        <p class="job-description">Description: {{ reactiveDescription }} </p>
         <!-- 
         aggiungiamo un metodo a un RouterLink, che al click va a:
         - modificare lo stato di"showFullDescription"
         - al momento della modifica va a rieseguire il computed che contiene esso, cambiando la descrizione in maniera dinamica
         *in tal caso è true, andiamo a mostrare un bottone che permette di leggere meno e TRONCARE DI NUOVO LA DESCRIZIONE cambiando il flag
         -->
-        <div class="button-read-toggle">
-            <button v-if="!showFullDescription" class="read-more" @click="handleReading()">Read more...</button>
+        <div class="button-read-toggle" v-if="props.job.description.length > 90">
+            <button v-if="!showFullDescription" class="read-more" @click="handleReading()">Read all
+                description...</button>
             <button v-else class="read-less" @click="handleReading()">Read Less</button>
         </div>
-        <div class="company-info">
-            <p class="company-name">Company: {{ props.job.company.name }} </p>
-            <p class="company-description">{{ props.job.company.description }}</p>
-            <p class="contact-email">Contact Email: {{ props.job.company.contactEmail }} </p>
-            <p class="contact-phone">Contact Phone: {{ props.job.company.contactPhone }} </p>
-        </div>
+
         <!-- 
         settiamo anche il Router link per il bottone che porta a schermo completamente LE INFORMAZIONI DI QUEL JOB
         un una view a parte singola nella rotta "/jobs/job/JOB.ID" all'interno della view "Jobsdetails.vue"
         -->
         <div class="button-read-more">
             <RouterLink :to="'/jobs/' + props.job.id" class="read-more-job">Leggi di più</RouterLink>
-            <i class="pi pi-eye" style="font-size: 1.1rem; color: white;"></i>
+            <i class="pi pi-eye" style="color: white;font-size: 1.2rem;"></i>
         </div>
     </div>
 </template>
@@ -95,7 +91,7 @@ const reactiveDescription = computed(() => {
     gap: 10px;
     width: 500px;
     background-color: rgb(232, 249, 242);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 3px 7px 8px 2px rgba(255, 255, 255, 0.2);
     font-family: var(--font-text);
     padding: 40px 20px;
     border-radius: 8px;
@@ -159,7 +155,7 @@ div.button-read-more {
     justify-content: center;
     align-items: center;
     width: 30%;
-    background-color: green;
+    background-color: grey;
     text-align: center;
     padding: 10px;
     border-radius: 5px;
@@ -168,13 +164,16 @@ div.button-read-more {
     transition: background-color 0.3s ease-in-out;
 
     &:hover {
-        background-color: rgb(0, 88, 0);
+        background-color: rgb(0, 104, 0);
     }
+
+    ;
 }
 
 .read-more-job {
     color: white;
     font-size: 16px;
+    font-weight: 600;
     text-decoration: none;
     margin-right: 10px;
 }

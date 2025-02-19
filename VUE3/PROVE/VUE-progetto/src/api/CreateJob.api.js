@@ -11,7 +11,7 @@ const CreateJob = async (newJob) => {
     });
 
     if (!response.ok) {
-        throw new Error("Errore nella creazione del nuovo jon");
+        throw new Error("Errore nella creazione del nuovo job! riprova!");
     }
 
 }

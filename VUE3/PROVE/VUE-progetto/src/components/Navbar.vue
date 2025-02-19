@@ -38,17 +38,15 @@ al posto di :href usiamo l'attributo -> to="" cosi diventerà una SPA senza rica
         -->
         <nav>
             <ul>
-                <li :style="isActiveLink('/') ? { backgroundColor: 'rgb(0, 81, 0, 0.5)', borderRadius: '10px' } : {}">
+                <li :class="isActiveLink('/') ? 'active-link' : ''">
                     <RouterLink to="/">Home</RouterLink>
                     <i class="pi pi-home" style="font-size: 1.1rem; color: white;"></i>
                 </li>
-                <li
-                    :style="isActiveLink('/jobs') ? { backgroundColor: 'rgb(0, 81, 0, 0.5)', borderRadius: '10px' } : {}">
+                <li :class="isActiveLink('/jobs') ? 'active-link' : ''">
                     <RouterLink to="/jobs">Jobs</RouterLink>
                     <i class="pi pi-briefcase" style="font-size: 1.1rem; color: white;"></i>
                 </li>
-                <li
-                    :style="isActiveLink('/addJobs') ? { backgroundColor: 'rgb(0, 81, 0, 0.5)', borderRadius: '10px' } : {}">
+                <li :class="isActiveLink('/addJobs') ? 'active-link' : ''">
                     <RouterLink to="/addJobs">Add Jobs</RouterLink>
                     <i class="pi pi-plus" style="font-size: 0.9rem; color: white;"></i>
                 </li>
@@ -71,7 +69,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(210deg, black, green);
+    background: linear-gradient(210deg, black, rgb(17, 74, 17));
     position: fixed;
     width: 100%;
     top: 0;
@@ -90,6 +88,15 @@ header nav ul li {
     padding: 10px 25px;
 }
 
+/* style aggiunto AL LINK DELLA PAGINA CORRENTE tramite classe settata con operatore ternario controllando il path */
+header nav ul li.active-link {
+    background-color: rgb(0, 81, 0, 0.6);
+    border-radius: 5px;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+
 header nav ul li i {
     margin-left: 5px;
 }
@@ -98,11 +105,12 @@ header nav ul li a {
     color: white;
     font-size: 18px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.1s ease-in-out;
     text-decoration: none;
 
     &:hover {
-        color: greenyellow;
+        border-bottom: 2px solid white;
     }
+
 }
 </style>

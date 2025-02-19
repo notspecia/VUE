@@ -29,43 +29,38 @@ defineProps({
 
 <style scoped>
 .card {
-    width: 370px;
+    width: 380px;
     overflow: hidden;
-    background-color: green;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    transition: transform 0.3s;
-}
-
-.card:hover {
-    transform: scale(1.04);
+    background: linear-gradient(90deg, rgb(46, 255, 46), black);
+    box-shadow: 0 7px 8px 2px rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
 }
 
 .card img {
     width: 100%;
-    height: 220px;
+    height: 240px;
 }
 
 .cardContent {
     padding: 15px;
-    background: #fff;
+    background: #ffffff;
+}
+
+.cardContent h3,
+.cardContent p {
+    text-align: center;
 }
 
 .cardContent h3 {
-    font-size: 17px;
+    font-size: 19px;
     font-weight: 600;
-    font-family: var(--font-subtitle);
+    font-family: var(--font-title);
     margin-bottom: 15px;
 }
 
 .cardContent p {
     font-size: 14px;
     font-family: var(--font-text);
-    line-height: 1.4;
-}
-
-.cardContent h3,
-.cardContent p {
-    text-align: center;
+    line-height: 1.3;
 }
 </style>

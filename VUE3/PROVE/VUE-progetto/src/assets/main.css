@@ -17,13 +17,13 @@ html {
 
 /* -------------------------------------------------- */
 
+
 body {
-    background-color: rgb(242, 242, 242);
+    background-color: #1a1a1a;
 }
 
 h1,
 h2 {
-    margin-top: 150px;
     font-weight: 600;
 }
 
@@ -36,4 +36,38 @@ button:hover {
     --font-title: "Ubuntu", serif;
     --font-subtitle: Verdana, Geneva, Tahoma, sans-serif;
     --font-text: "Roboto", sans-serif;
+}
+
+
+/* ----------------------------------------------- */
+
+i.pi-spinner {
+    color: white;
+    font-size: 4.1rem;
+}
+
+/* ----------------------------------------------- */
+
+
+/* animation globali */
+@keyframes borderLight {
+    0% {
+        box-shadow: 0 0 0 0 rgba(66, 211, 146, 0);
+    }
+
+    25% {
+        box-shadow: 0 0 10px 3px rgba(66, 211, 146, 0.7);
+    }
+
+    50% {
+        box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.9);
+    }
+
+    75% {
+        box-shadow: 0 0 10px 3px rgba(66, 211, 146, 0.7);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(66, 211, 146, 0);
+    }
 }

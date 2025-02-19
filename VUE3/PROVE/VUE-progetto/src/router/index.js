@@ -5,11 +5,10 @@ import { createRouter, createWebHistory } from "vue-router";
 // importiamo le varie views COMPONENTS, all'interno di questo script per abilitare il routing e le sue azioni!
 import HomeView from "@/views/HomeView.vue";
 import JobsView from "@/views/JobsView.vue";
-import JobDetailsView from "@/views/JobdetailsView.vue";
+import JobDetailsView from "@/views/JobDetailsView.vue";
 import AddJobsView from "@/views/AddJobsView.vue";
-import DeletejobView from "@/views/DeletejobView.vue";
-import EditjobView from "@/views/EditjobView.vue";
-import NotfoundView from "@/views/NotfoundView.vue";
+import EditjobView from "@/views/EditJobView.vue";
+import NotfoundView from "@/views/NotFoundView.vue";
 
 
 /* 
@@ -41,16 +40,11 @@ const router = createRouter({
             name: "addJobs",
             component: AddJobsView
         }, 
-        // path di VIEWS accessibili all'interno di "Jobdetails.vue" per modificare/cancellare il job selezionato
+        // path di VIEWS accessibili all'interno di "Jobdetails.vue" per modificare il job selezionato
         {
             path: "/jobs/edit/:id",
             name: "editJob",
             component: EditjobView
-        },
-        {
-            path: "/jobs/delete/:id",
-            name: "deleteJob",
-            component: DeletejobView
         },
         // catchiamo tutte le rotte != da quelle definite, renderizzando a una pagina personalizzata 404
         {

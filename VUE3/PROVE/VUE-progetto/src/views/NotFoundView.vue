@@ -25,12 +25,12 @@ import { RouterLink } from "vue-router";
     align-items: center;
     justify-content: center;
     height: 100vh;
-    color: black;
+    color: white;
     font-family: var(--font-title);
 }
 
 .icon {
-    color: red;
+    color: green;
     font-size: 4rem;
     margin-bottom: 30px;
 }
@@ -47,9 +47,9 @@ p {
 
 .homeButton {
     padding: 10px 20px;
-    background-color: white;
+    background-color: rgb(0, 183, 0, 0.7);
     color: black;
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 5px;
     text-decoration: none;
     font-size: 1rem;

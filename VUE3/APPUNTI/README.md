@@ -46,7 +46,13 @@ Ora si dovrebbe avere il primo progetto Vue in esecuzione! Nota che i componenti
 
 
 # ref() VS reactive()
-![immagine appunti]("./Immagine 2025-02-14 164523.png")
+![immagine appunti]("./Immagine 2025-02-14 164523.png");
+
+- **ref()**: ref può ricevere come valore objects ({}, []), ma anche valori primiti (string, number, boolean), il valore delle variabili definite con ref(), possono essere rinizializzate o riassegnati tramite il *.value*
+
+- **reactive()**: reactive può ricevere come valore SOLO DI TIPO objects ({}, []), la variabile diretta che contiene il reactive() NON è riassegnabile! ma ovviamente i valori e le proprietà al suo interno (dato che è un oggetto), posssono essere manipolati nel corso del programma
+
+
 
 # Computed() funzione
 In Vue 3 con Composition API, la funzione **computed()** viene utilizzata per `creare proprietà computate (computed properties)`. Queste *proprietà vengono ricalcolate solo quando le loro dipendenze cambiano*, rendendole più efficienti rispetto ai metodi normali.
@@ -68,6 +74,7 @@ import { ref, computed } from "vue";
 - ✅ Quando devi calcolare un *valore derivato da dati reattivi*.
 - ✅ Quando vuoi migliorare le prestazioni evitando calcoli inutili.
 - ✅ Quando hai bisogno di un valore memorizzato in cache fino al cambio delle dipendenze.
+
 
 
 # Vue router

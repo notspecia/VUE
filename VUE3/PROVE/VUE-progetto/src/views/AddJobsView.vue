@@ -5,17 +5,17 @@
 - useToast(): per poter utilizzare i toast notification importati precedentemente ed usati .use(), nell'App
  */
 import { reactive } from 'vue';
+import { useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
 // script contenente la fetch per la creazione del nuovo Job
 import CreateJob from '@/api/CreateJob.api';
 
 
 const toast = useToast(); // assegnamo il useToast() ad una varibile da utilizzare per mostrare a schermo i toast
+const router = useRouter(); // assegnamo il useRouter() ad una varibile da utilizzare per renderizzare l'utente 
 
-// ---------------------------------------
 
-
-// creiamo una variabile reattiva tramite ref(), contenente l'oggetto che verrà riempito dai form tramite il "v-model" associato alle proprietà!
+// creiamo una variabile reattiva tramite reactive(), contenente l'oggetto che verrà riempito dai form tramite il "v-model" associato alle proprietà!
 const stateNewJob = reactive({
     title: "",
     type: "",
@@ -38,10 +38,16 @@ const handleSubmit = async () => {
     // effetuiamo una POST verso il json-server locale per aggiungere il job appena creato tramite FORM
     try {
         await CreateJob(stateNewJob);
-        toast.success("Job aggiunto con successo!"); // in caso di successo, aggiunto a schermo un toast che notifica il successo
+
+        // in caso di successo, aggiunto a schermo un toast che notifica il successo, + renderizziamo utente alla pagina dei jobs/
+        toast.success("Job aggiunto con successo!");
+        setTimeout(() => {
+            router.push("/jobs");
+        }, 2000);
+
     } catch (error) {
-        console.log(error.message);
-        toast.error("Errore aggiunta del Job! riprova!"); // in caso di errore, aggiunto a schermo un toast che notifica l'errore
+        console.log(error.message)
+        toast.error("Errore nella creazione del nuovo job! riprova!"); // in caso di errore, aggiunto a schermo un toast che notifica l'errore
     }
 
 }
@@ -59,7 +65,11 @@ const handleSubmit = async () => {
 
             <!-- colleghiamo una funzione event listener, che scatta quando il form viene @submittato -->
             <form @submit.prevent="handleSubmit()">
-                <h3 class="form-title">Add Job</h3>
+                <h3 class="form-title">
+                    Add Job
+                    <i class="pi pi-plus" style="font-size: 1.3rem; margin: 0 10px;"></i>
+                    <i class="pi pi-briefcase" style="font-size: 1.3rem;"></i>
+                </h3>
 
                 <div class="form-group">
                     <label for="title">Job Name</label>
@@ -113,7 +123,7 @@ const handleSubmit = async () => {
                     <input id="image" name="image" placeholder="URL path of the image" v-model="stateNewJob.image"
                         required />
                 </div>
-
+                <hr>
                 <!-- dati e informazioni della compagnia che offre il lavoro -->
                 <h3 class="form-title-company">Company Info</h3>
 
@@ -153,20 +163,24 @@ const handleSubmit = async () => {
 
 <style scoped>
 .container {
-    max-width: 45%;
-    margin: 100px auto;
+    max-width: 40%;
+    margin: 130px auto;
     padding: 30px;
 }
 
 .form-container {
+    background-color: whitesmoke;
+    box-shadow: 3px 5px 10px 3px rgba(255, 255, 255, 0.2);
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.1);
+
 }
 
 .form-container h3.form-title {
-    text-align: center;
-    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
     font-weight: 600;
     font-family: var(--font-title);
     margin: 30px 0 50px;
@@ -174,10 +188,18 @@ const handleSubmit = async () => {
 
 .form-container h3.form-title-company {
     text-align: center;
-    font-size: 22px;
+    font-size: 26px;
     font-weight: 600;
     font-family: var(--font-title);
     margin: 40px 0;
+}
+
+hr {
+    width: 100%;
+    height: 2px;
+    border: none;
+    background: linear-gradient(90deg, rgb(0, 160, 0), black);
+    margin: 20px auto;
 }
 
 .form-group {
@@ -185,31 +207,42 @@ const handleSubmit = async () => {
 }
 
 .form-group label {
-    display: inline-block;
-    font-size: 15px;
-    font-family: var(--font-subtitle);
+    display: block;
+    font-size: 16px;
+    font-family: var(--font-title);
     margin-bottom: 6px;
 }
 
-.form-group input,
-.form-group textarea,
-.form-group select {
-    width: 100%;
+input,
+textarea,
+select {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
     font-family: var(--font-text);
-    padding: 8px;
-    border: 1px solid #d0d0d0;
-    border-radius: 4px;
+    background: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border: 1px solid green;
 }
 
 /* tasto submit del form per l'aggiunta di uno jobs tramite il @submit del form */
 .form-submit {
     display: flex;
     justify-content: center;
+    margin-top: 80px;
 }
 
 .form-submit button {
     width: 60%;
-    background: green;
+    background-color: green;
     color: white;
     font-size: 18px;
     font-family: var(--font-subtitle);
@@ -217,9 +250,10 @@ const handleSubmit = async () => {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease-in;
 }
 
 .form-submit button:hover {
-    background: darkgreen;
+    background-color: darkgreen;
 }
 </style>

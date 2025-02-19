@@ -12,7 +12,7 @@ import { defineProps, onMounted, reactive, defineEmits } from 'vue';
 import { useRouter } from 'vue-router';
 
 // importiamo il componente Cardjob che renderizzera i dati dei jobs
-import CardJob from '@/components/Cardjob.vue';
+import CardJob from '@/components/CardJob.vue';
 // importiamo API script, per caricare i jobs all'interno del componente quando viene montato
 import GetJobs from '@/api/GetJobs.api';
 
@@ -41,7 +41,7 @@ const props = defineProps({
 let stateJobs = reactive({
     jobs: [],
     isLoading: true
-})
+});
 
 // in caso il fetching andrebbe male, renderizziamo nel catch{} alla pagina 404 personalizzata
 const router = useRouter();
@@ -55,7 +55,7 @@ onMounted(async () => {
         console.log(error);
         router.push("/not-found"); // in caso di errore fetching, renderizza alla schermata 404 personalizzata
     } finally {
-        stateJobs.isLoading = false;
+        stateJobs.isLoading = false; // quando ha finito di caricare (sia TRY che CATCH), andiamo a rimuovere il loader
     }
 });
 
@@ -81,14 +81,17 @@ const handleHideJobs = (length) => {
 
 
 <template>
+    <!-- importiamo il contenuto messo in mezzo ai tag del VIEW "HomeView.vue", contenente l'immagine -->
+    <slot />
 
-    <h2>I Nostri Lavori Disponibili!</h2>
+    <!-- se capiamo di essere nella View "JobListing.vue", diamo del margin top al titolo -->
+    <h2 :class="!props.limit ? 'more-space' : ''">I Nostri Lavori Disponibili!</h2>
+    <p>Una raccolta dei nostri progetti migliori, realizzati con passione e attenzione ai dettagli. Scopri le soluzioni
+        innovative che abbiamo creato per aiutare aziende e professionisti a crescere nel digitale.</p>
+
 
     <!-- QUANDO AVRA CARICATO, MOSTRA TUTTE LE CARD PREVIEW DEI JOBS -->
     <div v-if="!stateJobs.isLoading">
-
-        <!-- importiamo il contenuto messo in mezzo ai tag del VIEW "Jobs.vue", contenente l'immagine -->
-        <slot />
         <!-- 
         andiamo a ciclare temporaneo (usiamo il v-for="" vecchio dato che ogni jobs ha già un suo id come proprietà)
         *passiamo come props al figlio Cardjob.vue, l'oggetto contenente i dati di quel jobs 
@@ -105,14 +108,14 @@ const handleHideJobs = (length) => {
         - true: andiamo a mostrare il bottone che permette di nascodere i jobs tornando a mostrarne solo 3  
         -->
         <div v-if="!props.allShowed && props.limit" class="buttonStyle">
-            <button @click="handleShowJobs(stateJobs.jobs.length)">
-                Mostra <i class="pi pi-plus" style="color: rgb(54, 54, 54); font-size: 0.9rem;"></i> jobs
-            </button>
+            <div @click="handleShowJobs(stateJobs.jobs.length)">
+                Mostra <i class="pi pi-plus" style="font-size: 0.9rem;"></i> jobs
+            </div>
         </div>
         <div v-else-if="props.allShowed && props.limit" class="buttonStyle">
-            <button @click="handleHideJobs(stateJobs.jobs.length)">
-                Mostra <i class="pi pi-minus" style="color: rgb(54, 54, 54); font-size: 0.9rem;"></i> jobs
-            </button>
+            <div @click="handleHideJobs(stateJobs.jobs.length)">
+                Mostra <i class="pi pi-minus" style="font-size: 0.9rem;"></i> jobs
+            </div>
         </div>
 
     </div>
@@ -120,7 +123,7 @@ const handleHideJobs = (length) => {
 
     <!-- inserito un loader nel caso in cui i jobs non siano stati ancora caricati completamente -->
     <div v-else class="spinner">
-        <i class="pi pi-spin pi-spinner" style="font-size: 4rem"></i>
+        <i class="pi pi-spin pi-spinner"></i>
     </div>
 </template>
 
@@ -129,38 +132,46 @@ const handleHideJobs = (length) => {
 
 <style scoped>
 h2 {
+    color: white;
     text-align: center;
-    font-size: 35px;
+    font-size: 40px;
     font-family: var(--font-title);
+    margin: 70px 0 20px;
+}
+
+h2.more-space {
+    margin-top: 180px;
+}
+
+p {
+    width: 45%;
+    color: rgba(235, 235, 235, .6);
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.4;
+    font-family: var(--font-subtitle);
+    margin: 0 auto;
 }
 
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    gap: 30px;
-    margin: 50px auto 40px;
+    gap: 50px;
+    margin: 50px 0 40px;
 }
 
 .buttonStyle {
     display: flex;
     justify-content: center;
-}
-
-button {
-    width: 15%;
-    color: rgb(54, 54, 54);
-    font-size: 20px;
+    color: green;
+    font-size: 25px;
     font-family: var(--font-subtitle);
+    text-decoration: underline;
     padding: 10px 0;
-    border: 1px solid black;
-    border-radius: 10px;
-    margin-bottom: 20px;
-
-    &:hover {
-        text-decoration: underline;
-    }
+    margin: 30px;
+    cursor: pointer;
 }
 
 /* style per l'icona di spinner */
