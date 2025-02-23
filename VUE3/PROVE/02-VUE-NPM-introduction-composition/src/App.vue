@@ -57,17 +57,17 @@ import { ref } from 'vue';
 
 // dati da inserire dentro il template/elaborarli (diventano REATTIVI tramite la funzione ref() )
 const name = ref("Gabriele");
-const status = ref("Attivo");
+const isActive = ref(true);
 const foods = ref(['pizza', 'pasta', 'risotto']);
 
 /* funzioni metodi arrow function (la nomeclatura cambia rispetto a quello di prima)
 - non usiamo THIS, dato che non siamo + in un oggetto come i data() di options API
 - USIAMO IL DATO.VALUE -> name.value / status.value */
 const handleClick = () => {
-  if (status.value === 'active') {
-    status.value = 'inactive';
+  if (isActive.value) {
+    isActive.value = false;
   } else {
-    status.value = 'active';
+    isActive.value = true;
   }
 }
 
@@ -80,20 +80,28 @@ const handleClick = () => {
 
   <!--* 01. rendiamo il template dinamico tramite alcune direttive (condizionali, cicli, eventi) -->
 
-  <!-- 
-direttiva v-if, se status è true/active allora renderizza il paragrafo
-con v-else-if, mettiamo un altra codizione if, se nemmeno questa è true allora renderizza il paragrafo nell'else!
-con v-else non renderizza l'altra opzione se il status è false 
--->
-  <h2 v-if="status === 'active'">sono ATTIVO</h2>
-  <h2 v-else-if="status === 'inactive'">sono INATTIVO</h2>
-  <h2 v-else>sono sbagliato! D:</h2>
+  <!-- SOLUZIONE 1
+  direttiva v-if, se status è true/active allora renderizza il paragrafo
+  con v-else-if, mettiamo un altra codizione if, se nemmeno questa è true allora renderizza il paragrafo nell'else!
+  con v-else non renderizza l'altra opzione se il status è false 
+  -->
+  <!-- <h2 v-if="isActive">sono ATTIVO</h2>
+  <h2 v-else-if="!isActive">sono INATTIVO</h2>
+  <h2 v-else>sono sbagliato! D:</h2> -->
+
+  <!-- SOLUZIONE 2 
+  utilizziamo il ternario per le condizioni if -->
+  <h2>{{ isActive ? "Sono attivo!" : "Sono intattivo!" }}</h2>
+
+
+  <!-- ------------------------------------------------------ -->
+
 
   <!-- 
-v-for possiamo usarlo per "scorrere" gli elementi di un dato array, su molteplici elementi
-usando "ELEMENTOSINGOLO in ARRAYELEMENTI"
-inoltre come in react o altri frameework, assegniamo ad ogni elemento una key, in questo caso l'indice dell'elemento
--->
+  v-for possiamo usarlo per "scorrere" gli elementi di un dato array, su molteplici elementi
+  usando "ELEMENTOSINGOLO in ARRAYELEMENTI"
+  inoltre come in react o altri frameework, assegniamo ad ogni elemento una key, in questo caso l'indice dell'elemento
+  -->
   <h3>Cibi preferiti:</h3>
   <ul>
     <li v-for="food in foods" :key="foodID">{{ food }}</li>

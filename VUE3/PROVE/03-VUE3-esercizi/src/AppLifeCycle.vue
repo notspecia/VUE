@@ -17,7 +17,7 @@ const handleDelete = (index) => {
     tasks.value.splice(index, 1);
 }
 
-//**** funzione onMounted() che contiene una callback function async che carica delle tasks via fetch API ***** 
+//**** funzione onMounted() che contiene una callback function async che carica delle tasks via fetch GET API ***** 
 onMounted(async () => {
     try {
         // otteniamo il json con le task e lo convertiamo in una array da json
