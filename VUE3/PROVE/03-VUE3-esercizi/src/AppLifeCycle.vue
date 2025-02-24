@@ -1,6 +1,8 @@
 <script setup>
-// importiamo il ref() funzione che permette di rendere i dati reattivi
-// importiamo onMounted() funzione che viene da vue che viene eseguita al montaggio del componente VUE
+/*
+importiamo il ref() funzione che permette di rendere i dati reattivi
+importiamo onMounted() funzione che viene da vue che viene eseguita al montaggio del componente VUE
+*/
 import { ref, onMounted } from 'vue';
 
 const tasks = ref([]); // contenitore delle task aggiornato tramite form
