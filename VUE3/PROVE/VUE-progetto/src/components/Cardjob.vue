@@ -166,8 +166,6 @@ div.button-read-more {
     &:hover {
         background-color: rgb(0, 104, 0);
     }
-
-    ;
 }
 
 .read-more-job {

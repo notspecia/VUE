@@ -8,7 +8,7 @@ import { RouterLink } from 'vue-router';
 <template>
     <div class="button-return-jobs">
         <RouterLink to="/jobs" class="return-job">
-            <i class="pi pi-arrow-circle-left" style="   color: rgba(235, 235, 235, .7);; font-size: 1.3rem;"></i>
+            <i class="pi pi-arrow-circle-left" style=" color: rgba(235, 235, 235, .7); font-size: 1.3rem;"></i>
             Torna ai jobs
         </RouterLink>
     </div>

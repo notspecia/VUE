@@ -1,11 +1,10 @@
 {
   "jobs": [
     {
-      "id": 1,
       "title": "Senior Vue Dev",
       "type": "Full-Time",
       "location": "Boston, MA",
-      "description": "We are seeking a talented Front-End Developer to join our team in Boston, MA. The ideal candidate will have strong skills in HTML, CSS, and JavaScript, with experience working with modern JavaScript frameworks such as Vue or Angular.",
+      "description": "We are seeking a talented Front-End Developer to join our team in Boston, MA. The ideal candidate will have strong skills in HTML\n",
       "salary": "$90K - $100K",
       "company": {
         "name": "NewTek Solutions",
@@ -13,22 +12,8 @@
         "contactEmail": "contact@teksolutions.com",
         "contactPhone": "555-555-5555"
       },
-      "image": "https://recruit.hennge.com/wp-content/uploads/2024/08/0922_360.jpg"
-    },
-    {
-      "title": "Vue.js Developer",
-      "type": "Full-Time",
-      "location": "Brooklyn, NY",
-      "description": "Are you passionate about front-end development? Join our team in vibrant Brooklyn, NY, and work on exciting projects that make a difference. We offer competitive compensation and a collaborative work environment where your ideas are valued.",
-      "salary": "$70K - $80K",
-      "company": {
-        "name": "Dolor Cloud",
-        "description": "Dolor Cloud is a leading technology company specializing in digital solutions for businesses of all sizes. With a focus on innovation and customer satisfaction, we are committed to delivering cutting-edge products and services.",
-        "contactEmail": "contact@dolorsitamet.com",
-        "contactPhone": "555-555-5555"
-      },
-      "image": "https://t3.ftcdn.net/jpg/03/18/60/62/360_F_318606217_Hk8jo2MVoI33SQOkYrfOF929J7JgIP0P.jpg",
-      "id": 3
+      "image": "https://recruit.hennge.com/wp-content/uploads/2024/08/0922_360.jpg",
+      "id": 1
     },
     {
       "title": "Vue Front-End Developer",
@@ -61,21 +46,6 @@
       "image": "https://media.licdn.com/dms/image/v2/D4D12AQF5Q2VLuhmVeQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1729355857071?e=2147483647&v=beta&t=IVLb9oHNZdHf4SkI6vgW4iPZPu8OooDOMR4HHA8Z5Ug"
     },
     {
-      "id": 6,
-      "title": "Vue Native Developer",
-      "type": "Full-Time",
-      "description": "Join our team as a Front-End Developer in beautiful Portland, OR. We are looking for a skilled and enthusiastic individual to help us create innovative web solutions. Competitive salary and great benefits package available.",
-      "location": "Portland, OR",
-      "salary": "$100K - $110K",
-      "company": {
-        "name": "Port Solutions INC",
-        "description": "Port Solutions is a leading technology company specializing in software development and digital marketing. We are committed to providing our clients with cutting-edge solutions and our employees with a supportive and rewarding work environment.",
-        "contactEmail": "contact@ipsumlorem.com",
-        "contactPhone": "555-555-5555"
-      },
-      "image": "https://aulab.it/wp-content/uploads/2023/03/Come-diventare-un-front-end-developer-4-cover-1024x576.jpg"
-    },
-    {
       "title": "Dilussss frontend",
       "type": "Part-Time",
       "location": "Italy, RO",
@@ -89,6 +59,36 @@
       },
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxxgI895PuInu6ZEJQRatLaCzIhBoN3sK0Uw&s",
       "id": 10
+    },
+    {
+      "title": "Indigo Hays",
+      "type": "Part-Time",
+      "location": "Dolore laboris itaqu",
+      "description": "Neque repudiandae id",
+      "salary": "$125K - $150K",
+      "company": {
+        "name": "Richard and Harvey Inc",
+        "description": "Nesciunt sint ea id",
+        "contactEmail": "ryhe@mailinator.com",
+        "contactPhone": "+1 (984) 865-4047"
+      },
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrBGI8qZsUYY_WpTFeIy37mOXKua5BN-WNbQ&s",
+      "id": 11
+    },
+    {
+      "title": "Noelani Patel",
+      "type": "Remote",
+      "location": "Consequuntur aute a ",
+      "description": "Voluptatibus perspic cvdgkl,j\nàfdg  fhgàk dfòlgksfògksjgs fgfsglksfgjgsgksgsjlgsjfsd  jdsjsdk j fsdjfs dkj fskfj sdjf sd lsjofaeopwep rwt  ri3'ewfsdp  ffkdkcoefa c fopdfjociapfjmvsdafkv ofdjjffpeelcaapefkdjffòsaik",
+      "salary": "$90K - $100K",
+      "company": {
+        "name": "Lara and Gonzalez Associates",
+        "description": "Aut quos rerum dolor",
+        "contactEmail": "vohabokis@mailinator.com",
+        "contactPhone": "+1 (102) 595-9495"
+      },
+      "image": "https://media.istockphoto.com/id/673415042/photo/business-life.jpg?s=612x612&w=0&k=20&c=-wR0KKiT-GqiJ9Z0x9cXPY_LjuJExoe67J_smmTypXk=",
+      "id": 12
     }
   ]
 }

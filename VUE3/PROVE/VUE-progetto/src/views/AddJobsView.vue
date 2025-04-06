@@ -49,7 +49,6 @@ const handleSubmit = async () => {
         console.log(error.message)
         toast.error("Errore nella creazione del nuovo job! riprova!"); // in caso di errore, aggiunto a schermo un toast che notifica l'errore
     }
-
 }
 </script>
 
