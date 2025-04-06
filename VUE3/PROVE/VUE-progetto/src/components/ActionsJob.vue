@@ -70,9 +70,6 @@ const handleDelete = async () => {
     justify-content: center;
     width: 25%;
     padding: 10px;
-    background: linear-gradient(80deg, #ffffff 65%, rgb(1, 113, 1));
-
-
 }
 
 .job-actions h3 {

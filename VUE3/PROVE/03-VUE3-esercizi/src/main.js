@@ -5,8 +5,10 @@
 // import App from './AppLifeCycle.vue'
 
 // COMPUTED VUE APP prove
-import App from './AppComputedReference.vue'
+// import App from './AppComputedReference.vue'
 
+// ES6 VUE APP prove
+import App from './AppRipassoES6.vue'
 
 // -----------------------------------
 

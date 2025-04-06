@@ -3,7 +3,7 @@
 // funzione API esportata verso i componenti VIEW per recuperare i jobs da json-server tramite GET
 const GetJobs = async () => {
 
-    const response = await fetch("http://localhost:3000/jobs",{
+    const response = await fetch("http://localhost:3000/jobs", {
         method: "GET",
         headers: {
             'Content-Type': 'application/json',

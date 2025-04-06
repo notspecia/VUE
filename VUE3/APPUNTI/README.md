@@ -69,6 +69,7 @@ import { ref, computed } from "vue";
     const totalPrice = computed(() => price.value * quantity.value);
 ```
 👉 totalPrice viene ricalcolato solo quando price o quantity cambiano.
+si puo dall'ultima versione inserire il valore attuale per evitare i re-rendering fatti dal computed anche se il valore cambia ma è sempre uguale a quello originale!!
 
 ## Quando usare computed() ?
 - ✅ Quando devi calcolare un *valore derivato da dati reattivi*.

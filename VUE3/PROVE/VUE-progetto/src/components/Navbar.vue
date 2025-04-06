@@ -14,7 +14,6 @@ returniamo un booleano "true/false" in base se la rotta passata come parametro =
 */
 const isActiveLink = (routePath) => {
     const route = useRoute();
-
     return route.path === routePath;
 }
 
@@ -70,7 +69,7 @@ header {
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(210deg, black, rgb(17, 74, 17));
-    position: fixed;
+    position: absolute;
     width: 100%;
     top: 0;
     left: 0;

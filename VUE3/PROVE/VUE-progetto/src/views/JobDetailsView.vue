@@ -98,7 +98,7 @@ onMounted(async () => {
 .job-container {
     display: flex;
     column-gap: 10px;
-    max-width: 70%;
+    max-width: 60%;
     background-color: rgb(255, 255, 255);
     box-shadow: 3px 7px 8px 2px rgba(255, 255, 255, 0.2);
     border-radius: 5px;
@@ -143,7 +143,7 @@ onMounted(async () => {
 }
 
 .job-image img {
-    width: 50%;
+    width: 70%;
     height: 260px;
     border-radius: 7px;
 

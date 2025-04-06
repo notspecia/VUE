@@ -85,7 +85,8 @@ const handleHideJobs = (length) => {
     <slot />
 
     <!-- se capiamo di essere nella View "JobListing.vue", diamo del margin top al titolo -->
-    <h2 :class="!props.limit ? 'more-space' : ''">I Nostri Lavori Disponibili!</h2>
+    <h2 :style="{ marginTop: !props.limit ? '180px' : '0' }">I Nostri Lavori Disponibili!</h2>
+
     <p>Una raccolta dei nostri progetti migliori, realizzati con passione e attenzione ai dettagli. Scopri le soluzioni
         innovative che abbiamo creato per aiutare aziende e professionisti a crescere nel digitale.</p>
 
@@ -137,10 +138,6 @@ h2 {
     font-size: 40px;
     font-family: var(--font-title);
     margin: 70px 0 20px;
-}
-
-h2.more-space {
-    margin-top: 180px;
 }
 
 p {
