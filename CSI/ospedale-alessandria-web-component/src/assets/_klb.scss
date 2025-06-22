@@ -1,0 +1,122 @@
+:host {
+  // klb host
+  /* Default color */
+  --klb-card: var( --klb-card,black);
+  --klb-search-hover: var(--klb-search-hover, yellow);
+  /*List style*/
+  --klb-li-content-before: var(--klb-li-content-before, "•");
+  --klb-li-color: var( --klb-li-color, black);
+  --klb-li-padding-left: var(--klb-li-padding-left, 5px);
+  --klb-li-padding-right: var(--klb-li-padding-right, 5px);
+  --klb-li-list-style-type: var( --klb-li-list-style-type, none);
+  --klb-li-content-before-font: var(--klb-li-content-before-font, 10px);
+ /* link style */
+  --klb-link-color: var( --klb-link-color, #0d6efd);
+}
+
+a {
+  color: var(--klb-link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--klb-link-color);
+}
+
+a.assistance {
+  color: var(--klb-link-color);
+  text-decoration: none;
+}
+
+a.assistance:hover {
+  text-decoration: underline;
+  color: var(--klb-search-hover);
+}
+
+
+
+//Input search 
+ul li:before {
+  content: none;
+}
+
+.input-group {
+  height: 45px;
+}
+
+.input-group-text {
+  height: 45px;
+}
+
+.input-group .form-control,
+.input-group .btn {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.input-group .form-control {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.list-group-item:hover {
+  cursor: pointer;
+  color: white;
+  background-color: var(--klb-search-hover);
+
+  .icon {
+    fill: white;
+  }
+}
+
+//klb pagina
+.card-detail-body {
+  ul {
+    list-style-type: var(--klb-li-list-style-type);
+    padding: 0;
+  }
+  ul li::before {
+    content: var(--klb-li-content-before);
+    color: var(--klb-li-color);
+    padding-left: var(--klb-li-padding-left);
+    padding-right: var(--klb-li-padding-right);
+    font-size: var(--klb-li-content-before-font);
+    font-weight: bold;
+  }
+}
+
+.csi-ce--knowledge-base {
+  .clickable-card {
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+    transition: border-color .5s ease;
+    border: 3px solid transparent !important;
+  }
+
+  .clickable-card:hover {
+    color: var(--klb-card);
+    box-shadow: none;
+    border-color: var(--klb-card) !important;
+
+    // .card-title {
+    //   text-decoration: underline;
+    // }
+  }
+
+  .card {
+    border: 3px solid;
+    padding: 1%;
+    border-radius: 5px;
+    height: 100%;
+  }
+
+  .card:after {
+    margin-top: 0;
+  }
+}

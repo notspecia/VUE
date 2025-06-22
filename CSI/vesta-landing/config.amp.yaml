@@ -1,0 +1,24 @@
+productName: vesta
+componentName: vestaportal
+componentVersion: 1.0.0
+
+stages:
+  build: yes
+
+build:
+  buildFlow: sequential
+  buildTool: npm_node
+  buildToolVersion: node_22_0_0
+  buildEnvironment: generic
+  buildOptionString: "build:${environment}"
+  mavenSettings: 
+
+jobsToCopyFromList: 
+ 
+targetDir: 
+
+artifactsToArchive: 
+
+builds_to_execute:
+  vestaportal:
+    artifactsToPublish: "dist_arch/*.tar"

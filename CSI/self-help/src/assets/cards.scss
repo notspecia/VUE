@@ -1,0 +1,31 @@
+/**
+ * @file        cards.scss
+ * @date        2025-02-25
+ * @description:
+
+ regole di style con proprietà per stilizzare le card in percorsi guidati (erano prima presenti nel main.scss!)
+ */
+
+.styled-description {
+  max-height: 236px;
+  overflow: hidden;
+}
+
+.styled-description ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  line-height: 2;
+}
+
+.styled-description li {
+  position: relative;
+  padding-left: 24px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  font-size: var(--bs-font-size-md);
+  background-image: url(/asset/ul-chevron.png);
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: left 5px;
+}

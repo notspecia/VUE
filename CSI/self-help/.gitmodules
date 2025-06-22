@@ -1,0 +1,4 @@
+[submodule "asap"]
+	path = asap
+	url = https://gitlab.csi.it/prodotti/amp/asap.git
+	branch = component-jenkinsfile

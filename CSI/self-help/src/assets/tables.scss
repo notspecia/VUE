@@ -1,0 +1,110 @@
+/**
+ * @file        tables.scss
+ * @date        2025-02-24
+ * @description:
+
+ file scss in cui contiene:
+ 
+ - proprietà di style usate sulle table di assets + tickets (spostate dal main.scss), le singole proprietà di style
+  che sono utilizzate sulle singole tabelle, li troviamo nello scope style del componente
+
+ - provvisoriamente un @mixin con proprietà di style da applicare 
+  alle tabelle "TicketsTable.vue / AssetsTable.vue", all'interno delle media query con diversi br nelle tabelle all'interno dello style scoped
+ */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-radius: var(--round);
+  overflow: hidden;
+  box-shadow: 1px 2px 24px #00000029;
+}
+
+.custom-table th,
+.custom-table td {
+  font-size: 15px;
+  padding: 10px 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.custom-table th {
+  text-align: left;
+  font-weight: 700;
+  height: 67px;
+}
+
+.custom-table:not(.assets-table) tbody tr:hover {
+  cursor: pointer;
+  background-color: #f7f7f7;
+}
+
+.custom-table tbody tr {
+  background-color: white;
+}
+
+.custom-table td {
+  background-color: inherit;
+  color: #333;
+}
+
+.status-label {
+  padding: 5px 10px;
+  border-radius: var(--round);
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-block;
+  min-width: 80px;
+  text-align: center;
+}
+
+// MIXIN PER RESPONSIVE TABELLE DA @import (importare) ALL'INTERNO DELLO STYLE SCOPED SCSS DEL COMPONENTE SINGOLO
+@mixin tableResponsive {
+  // togliamo l'ombra dalla tabella intorno (dato che ora ogni "tabella" sarebbe ogni <tr> di prodotto), e settiamola intotno alla colonna di ì row <tr>
+  table.custom-table {
+    box-shadow: none;
+  }
+  table.custom-table tr {
+    box-shadow: 1px 2px 14px rgba(0, 0, 0, 0.1607843137);
+  }
+
+  /* nascondiamo il contenitore degli header <th>, ora li mostriamo a sinistra in ogni riga  */
+  .custom-table thead {
+    display: none;
+  }
+
+  // il contenitore della tabella ora diventa flex, andando a mettere in colonna i vari prodotti, ogni prodotto appertiene come sempre ad un <tr>
+  table.custom-table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 100%;
+  }
+
+  /* rendiamo tutti gli elementi della table block (row e celle) */
+  .custom-table tr,
+  .custom-table td {
+    display: block;
+  }
+
+  /* modfica delle riga di ogni prodotto */
+  .custom-table tr {
+    border: 1px solid #ddd;
+    border-radius: var(--round);
+  }
+
+  .custom-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    text-align: right;
+    position: relative;
+  }
+
+  /* colleghiamo il titolo della cella con un attributo al ::before, come se fosse il nuovo <th>  */
+  .custom-table td::before {
+    content: attr(data-label);
+    font-size: 0.85rem;
+    font-weight: bold;
+  }
+}

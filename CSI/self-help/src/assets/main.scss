@@ -1,0 +1,121 @@
+@import './colors.scss';
+@import './constants.scss';
+@import './base.scss';
+@import './cards.scss';
+@import './tables.scss';
+@import url('https://cdn.portali.csi.it/font/lora/v1/css/lora.css');
+@import url('https://cdn.portali.csi.it/font/titillium-web/v1/css/titilliumweb.css');
+
+.col-date {
+  width: 10%;
+}
+
+.col-request {
+  width: 30%;
+}
+
+.col-category {
+  width: 15%;
+}
+
+.col-status {
+  width: 10%;
+}
+
+.col-ticket {
+  width: 15%;
+}
+
+.col-actions {
+  width: 10%;
+}
+
+@media screen and (max-width: 768px) {
+  .col-date,
+  .col-category,
+  .col-status,
+  .col-ticket,
+  .col-actions {
+    width: 20%;
+  }
+
+  .col-request {
+    width: 40%;
+  }
+
+  .custom-table th,
+  .custom-table td {
+    padding: 8px;
+    font-size: 12px;
+  }
+}
+
+.input-group:hover {
+  outline: 1px solid $blue-light-2;
+  background-color: transparent;
+}
+
+.border-bottom-primary {
+  border: none;
+  border-bottom: 1px solid $blue-light-2 !important;
+  color: $blue-light-2;
+  background-color: transparent;
+  outline: none;
+  transition: border-color 0.3s ease;
+  box-shadow: none;
+}
+
+.border-bottom-primary:focus {
+  border-bottom: 1px solid $blue-light-2;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.border-bottom-icon {
+  border: none;
+  color: $blue-light-2;
+  background-color: transparent;
+  border-bottom: 1px solid $blue-light-2 !important;
+}
+
+.border-bottom-primary::placeholder {
+  color: $blue-light-2 !important;
+  opacity: 1;
+}
+
+.info {
+  min-width: 40%;
+}
+
+.user-info {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.user-name {
+  font-size: 1rem;
+}
+
+.avatar {
+  background-color: $grey !important;
+  border-radius: 50% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  min-width: 3rem;
+  min-height: 3rem;
+}
+
+@media (max-width: 768px) {
+  .user-name {
+    font-size: 0.9rem;
+  }
+
+  .avatar {
+    margin-left: 0.5rem;
+    padding: 0.2rem;
+  }
+}

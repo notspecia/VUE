@@ -1,0 +1,14 @@
+#self-help-frontend {
+  @extend %csi-ds-app-container;
+}
+
+body {
+  font-family: Titillium Web;
+  background-color: #f0f3f8 !important;
+}
+
+#self-help-frontend {
+  .page-body {
+    padding: 0;
+  }
+}
